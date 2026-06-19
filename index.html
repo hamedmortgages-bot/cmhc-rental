@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMHC Rental Project Financing — Estimate Your Deal | Hamed Ashouri</title>
+<meta name="description" content="Understand CMHC rental financing and MLI Select, then estimate your purpose-built rental project — debt sizing, equity, and returns — in your browser.">
+<style>
+  :root{
+    --navy:#1E2761;--navy2:#28346B;--blue:#2E75B6;--ice:#EAF0FB;--ice2:#CADCFC;
+    --gold:#B8902E;--goldl:#F3ECD9;--ink:#1A2238;--body:#3A4256;--gray:#6A7186;
+    --line:#DCE3F0;--white:#fff;--green:#2E7D5B;--greenbg:#E6F2EC;--amber:#B5852A;--amberbg:#FBF1DD;--red:#B5462F;--redbg:#F6E5E0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--body);background:#fff;line-height:1.55}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  a{color:var(--blue);text-decoration:none}
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(30,39,97,.97);backdrop-filter:blur(6px);color:#fff}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  nav .brand{font-weight:800;font-size:16px;color:#fff;letter-spacing:.2px}
+  nav .brand small{display:block;font-weight:400;font-size:11px;color:var(--ice2);letter-spacing:1px}
+  nav .links a{color:var(--ice2);font-size:13.5px;font-weight:600;margin-left:20px}
+  nav .links a:hover{color:#fff}
+  nav .cta{background:var(--gold);color:#3b2e08!important;padding:8px 14px;border-radius:8px;font-weight:700}
+  @media(max-width:720px){nav .links a:not(.cta){display:none}}
+  /* hero */
+  .hero{background:linear-gradient(160deg,#1E2761 0%,#28346B 70%,#33408a 100%);color:#fff;padding:64px 0 70px;position:relative;overflow:hidden}
+  .hero .badge{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+  .hero h1{font-size:42px;font-weight:800;line-height:1.12;margin:14px 0 16px;max-width:760px}
+  .hero p{font-size:17px;color:var(--ice2);max-width:620px}
+  .hero .btns{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 22px;border-radius:9px;font-weight:700;font-size:15px;cursor:pointer;border:none}
+  .btn.gold{background:var(--gold);color:#3b2e08}
+  .btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+  .hero .orb{position:absolute;border-radius:50%;background:rgba(255,255,255,.05)}
+  .o1{width:340px;height:340px;right:-80px;top:-90px}.o2{width:200px;height:200px;right:140px;bottom:-70px}
+  /* sections */
+  section{padding:56px 0}
+  .kick{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+  h2.sec{font-size:28px;color:var(--navy);font-weight:800;margin:8px 0 8px}
+  .lead{font-size:16px;color:var(--body);max-width:760px;margin-bottom:26px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:820px){.cards{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 2px 10px rgba(20,30,60,.05)}
+  .card .ic{width:46px;height:46px;border-radius:11px;background:var(--ice);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:12px}
+  .card h3{color:var(--navy);font-size:17px;margin-bottom:6px}
+  .card p{font-size:14px}
+  .alt{background:var(--ice)}
+  /* tiers */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px}
+  @media(max-width:820px){.tiers{grid-template-columns:1fr}}
+  .tier{border:1px solid var(--line);border-radius:14px;padding:20px;background:#fff;text-align:center}
+  .tier.best{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .tier .pt{font-size:30px;font-weight:800;color:var(--navy)}.tier.best .pt{color:#fff}
+  .tier .lab{font-size:12px;color:var(--gray);text-transform:uppercase;letter-spacing:1px}.tier.best .lab{color:var(--ice2)}
+  .tier ul{list-style:none;margin-top:12px;font-size:13.5px;text-align:left}
+  .tier li{padding:4px 0;border-top:1px solid rgba(0,0,0,.06)}.tier.best li{border-color:rgba(255,255,255,.12)}
+  /* calculator */
+  .calc{background:var(--navy);color:#fff;border-radius:18px;padding:8px;margin-top:6px}
+  .calc-inner{background:#fff;color:var(--body);border-radius:14px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media(max-width:860px){.calc-inner{grid-template-columns:1fr}}
+  .field{margin-bottom:13px}
+  label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+  label .h{font-weight:400;color:var(--gray);font-size:11.5px}
+  input[type=number],select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font-size:15px;color:var(--ink)}
+  input:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(46,117,182,.12)}
+  .pfx{position:relative}.pfx span{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--gray)}.pfx input{padding-left:22px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .seg{display:flex;gap:6px}.seg button{flex:1;padding:9px 4px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:12.5px;font-weight:600;color:var(--body);cursor:pointer}
+  .seg button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  details.adv{margin-top:6px;border-top:1px dashed var(--line);padding-top:10px}
+  details.adv summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--blue)}
+  /* results */
+  .res h4{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:10px}
+  .verdict{border-radius:12px;padding:14px 16px;margin-bottom:14px}
+  .verdict .b{font-size:19px;font-weight:800}.verdict .d{font-size:13px;margin-top:3px}
+  .v-go{background:var(--greenbg);border:1.5px solid var(--green)}.v-go .b{color:var(--green)}
+  .v-mid{background:var(--amberbg);border:1.5px solid var(--amber)}.v-mid .b{color:var(--amber)}
+  .v-no{background:var(--redbg);border:1.5px solid var(--red)}.v-no .b{color:var(--red)}
+  .kp{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .k{background:var(--ice);border-radius:11px;padding:12px}
+  .k .l{font-size:11px;color:var(--gray);font-weight:700;text-transform:uppercase}
+  .k .v{font-size:22px;font-weight:800;color:var(--navy);margin-top:2px}
+  .k .s{font-size:11px;margin-top:1px}
+  .k.dark{background:var(--navy)}.k.dark .l{color:var(--ice2)}.k.dark .v{color:#fff}.k.dark .s{color:var(--ice2)}
+  .mini{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+  .mini td{padding:6px 4px;border-bottom:1px solid var(--line)}.mini td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+  .mini tr.t td{font-weight:800;color:var(--navy)}
+  .flag{font-size:12.5px;border-radius:9px;padding:9px 11px;margin-top:11px}
+  .flag.ok{background:var(--greenbg);color:#1d5b40}.flag.warn{background:var(--amberbg);color:#6a4e12}.flag.bad{background:var(--redbg);color:#7a2e1c}
+  /* market */
+  .bench{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:820px){.bench{grid-template-columns:1fr 1fr}}
+  .b{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px}
+  .b .bv{font-size:20px;font-weight:800;color:var(--navy)}.b .bl{font-size:11px;color:var(--gray);text-transform:uppercase;font-weight:700;margin-bottom:3px}
+  .b .bs{font-size:11px;margin-top:3px}
+  .comp{background:var(--goldl);border:1px solid var(--gold);border-radius:13px;padding:18px;margin-top:20px;font-size:14.5px;color:#5e4912}
+  .comp b{color:#43340c}
+  /* form */
+  .formwrap{background:var(--ice);border-radius:18px;padding:30px;display:grid;grid-template-columns:1.1fr 1fr;gap:30px}
+  @media(max-width:820px){.formwrap{grid-template-columns:1fr}}
+  .formwrap h2{color:var(--navy);font-size:24px;margin-bottom:8px}
+  .formwrap input,.formwrap textarea,.formwrap select{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;font-size:15px;margin-bottom:11px;font-family:inherit}
+  .formwrap textarea{min-height:74px;resize:vertical}
+  .formnote{font-size:12px;color:var(--gray);margin-top:6px}
+  .cfg{background:#fff6f2;border:1px dashed var(--red);border-radius:9px;padding:10px 12px;font-size:12px;color:#7a2e1c;margin-bottom:14px}
+  /* footer */
+  footer{background:var(--navy);color:var(--ice2);padding:40px 0 30px;font-size:13px}
+  footer a{color:#fff}
+  .disc{font-size:11.5px;color:#9aa3c6;margin-top:18px;line-height:1.6}
+  .src{font-size:11px;color:var(--gray);margin-top:18px}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <div class="brand">Hamed Ashouri<small>MORTGAGE ADVISORY · ONTARIO</small></div>
+  <div class="links">
+    <a href="#learn">How it works</a>
+    <a href="#calc">Calculator</a>
+    <a href="#market">Market</a>
+    <a href="#start" class="cta">Get my analysis</a>
+  </div>
+</div></nav>
+
+<header class="hero">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="wrap">
+    <div class="badge">CMHC Rental Financing · MLI Select</div>
+    <h1>Finance your rental project with CMHC — and see if it pays before you commit.</h1>
+    <p>Lower down payments, longer amortization, and better rates for purpose-built rental. Learn how the program works, then estimate your own project right here.</p>
+    <div class="btns">
+      <a class="btn gold" href="#calc">Try the calculator</a>
+      <a class="btn ghost" href="#learn">Learn the basics</a>
+    </div>
+  </div>
+</header>
+
+<!-- LEARN -->
+<section id="learn">
+  <div class="wrap">
+    <div class="kick">The basics</div>
+    <h2 class="sec">What is CMHC rental financing?</h2>
+    <p class="lead">CMHC insures mortgages on rental buildings of 5+ units. That insurance lets lenders offer terms you can't get conventionally — and the flagship program, <b>MLI Select</b>, rewards affordability, energy efficiency, and accessibility with even better financing.</p>
+    <div class="cards">
+      <div class="card"><div class="ic">🏦</div><h3>Lower down payment</h3><p>Qualifying projects can be financed up to 95% of cost — far less cash in than conventional.</p></div>
+      <div class="card"><div class="ic">📆</div><h3>Longer amortization</h3><p>Up to 50 years, which lowers the monthly payment and supports a larger loan.</p></div>
+      <div class="card"><div class="ic">📉</div><h3>Better rates & terms</h3><p>Insured pricing, plus premium discounts and limited recourse at the top tier.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="kick">MLI Select</div>
+    <h2 class="sec">Earn points → unlock better terms</h2>
+    <p class="lead">Commit to affordability, energy efficiency, and/or accessibility to earn points. Your total unlocks one of three tiers (minimum 5 units required).</p>
+    <div class="tiers">
+      <div class="tier"><div class="lab">Minimum</div><div class="pt">50 pts</div>
+        <ul><li>Up to 85% LTV / 95% LTC</li><li>Up to 40-year amortization</li><li>10% premium discount</li></ul></div>
+      <div class="tier"><div class="lab">Strong</div><div class="pt">70 pts</div>
+        <ul><li>Up to 95% leverage</li><li>Up to 45-year amortization</li><li>20% premium discount</li></ul></div>
+      <div class="tier best"><div class="lab">Best terms</div><div class="pt">100 pts</div>
+        <ul><li>Up to 95% leverage</li><li>Up to 50-year amortization</li><li>30% premium discount + limited recourse</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calc">
+  <div class="wrap">
+    <div class="kick">Estimate your project</div>
+    <h2 class="sec">Rental project calculator</h2>
+    <p class="lead">Enter your numbers and see the loan you could support, the cash you'd need, and whether the project pencils. This is an estimate for discussion — not a quote or approval.</p>
+    <div class="calc"><div class="calc-inner">
+      <!-- inputs -->
+      <div>
+        <div class="field"><label>What are you doing?</label>
+          <div class="seg" id="segScenario">
+            <button data-v="buy" class="on">Buy existing</button>
+            <button data-v="build">Build new</button>
+            <button data-v="convert">Buy + convert</button>
+          </div></div>
+        <div class="row2">
+          <div class="field"><label>Number of units</label><input type="number" id="units" value="6" min="1" step="1"></div>
+          <div class="field"><label>Cash you can invest</label><div class="pfx"><span>$</span><input type="number" id="cash" value="900000" step="10000"></div></div>
+        </div>
+        <div id="buyBox">
+          <div class="field"><label>Purchase price <span class="h">(+ reno if converting)</span></label><div class="pfx"><span>$</span><input type="number" id="pp" value="2100000" step="25000"></div></div>
+        </div>
+        <div id="buildBox" style="display:none">
+          <div class="row2">
+            <div class="field"><label>Land cost</label><div class="pfx"><span>$</span><input type="number" id="land" value="1100000" step="25000"></div></div>
+            <div class="field"><label>Build cost <span class="h">$/SF</span></label><input type="number" id="psf" value="300" step="10"></div>
+          </div>
+          <div class="field"><label>Avg unit size <span class="h">SF</span></label><input type="number" id="usf" value="850" step="25"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Avg rent <span class="h">$/unit/mo</span></label><div class="pfx"><span>$</span><input type="number" id="rent" value="2300" step="25"></div></div>
+          <div class="field"><label>Interest rate <span class="h">%</span></label><input type="number" id="rate" value="4.75" step="0.05"></div>
+        </div>
+        <div class="field"><label>Financing path</label>
+          <div class="seg" id="segPath"><button data-v="cmhc" class="on">CMHC MLI Select</button><button data-v="conv">Conventional</button></div>
+          <div id="eligNote" class="formnote"></div></div>
+        <div class="field" id="ptBox"><label>MLI Select target points</label>
+          <div class="seg" id="segPoints"><button data-v="50">50</button><button data-v="70">70</button><button data-v="100" class="on">100</button></div></div>
+        <details class="adv"><summary>Advanced assumptions</summary>
+          <div class="row2" style="margin-top:10px">
+            <div class="field"><label>Vacancy <span class="h">%</span></label><input type="number" id="vac" value="3" step="0.5"></div>
+            <div class="field"><label>Operating expenses <span class="h">% of income</span></label><input type="number" id="exp" value="32" step="1"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Cap rate <span class="h">% (value)</span></label><input type="number" id="cap" value="5.0" step="0.1"></div>
+            <div class="field"><label>Down payment <span class="h">% (conv.)</span></label><input type="number" id="down" value="25" step="1"></div>
+          </div>
+        </details>
+      </div>
+      <!-- results -->
+      <div class="res">
+        <h4>Your estimate</h4>
+        <div id="verdict" class="verdict v-go"></div>
+        <div class="kp" id="kp"></div>
+        <table class="mini" id="mini"></table>
+        <div id="cashFlag"></div>
+        <a class="btn gold" href="#start" style="margin-top:14px;width:100%;text-align:center" id="ctaBtn">Get my full, deal-specific analysis →</a>
+      </div>
+    </div></div>
+    <p class="formnote" style="margin-top:10px">Estimate only. Figures depend on your inputs and current CMHC rules; confirm with a CMHC-approved lender. Projects under 5 units are financed conventionally, not under CMHC multi-unit.</p>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market" class="alt">
+  <div class="wrap">
+    <div class="kick">Toronto · 2025–2026</div>
+    <h2 class="sec">What the market looks like</h2>
+    <div class="bench">
+      <div class="b"><div class="bl">Avg rent (PBR)</div><div class="bv">$2,073–$2,690</div><div class="bs">1-bed to 2-bed</div></div>
+      <div class="b"><div class="bl">GTA vacancy</div><div class="bv">~3%</div><div class="bs">New builds ~7% at lease-up</div></div>
+      <div class="b"><div class="bl">Cap rate</div><div class="bv">3.5–5.5%</div><div class="bs">By asset & size</div></div>
+      <div class="b"><div class="bl">Build cost</div><div class="bv">$250–400/SF</div><div class="bs">Conversions $40k+/unit</div></div>
+    </div>
+    <div class="comp">
+      <b>A real Toronto example.</b> A house on a main road bought for ~<b>$800K</b>, plus ~<b>$150K</b> to legally convert to a triplex (~$340K all-in), produced <b>3 units and $6,000+/month</b> rent with <b>$2,000+/month</b> cash flow. After renovation it appraised around <b>$1.1M</b> — an ~$150K instant equity lift; a refinance pulled out ~$240K, leaving ~$100K in the deal.
+      <div class="src" style="color:#7a5e1a">Source: Elevate Realty, Toronto Multiplex Guide 2026 — illustration; results vary by deal.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section id="start">
+  <div class="wrap">
+    <div class="formwrap">
+      <div>
+        <div class="kick">Next step</div>
+        <h2>Get your full, deal-specific analysis</h2>
+        <p>Send me your project details and I'll run a complete CMHC analysis — debt sizing, equity, premium, returns, and a clear recommendation. No cost, no obligation.</p>
+        <div class="card" style="margin-top:16px">
+          <p style="font-size:13.5px"><b>What you'll get:</b> a sized loan estimate, the cash you'd need to close, your projected returns, the documents required, and an honest view of whether to proceed.</p>
+        </div>
+      </div>
+      <div>
+        <div class="cfg" id="cfgNote">⚙ <b>Setup needed:</b> this form isn't connected yet. Open the deployment guide and paste your Zoho Web-to-Lead tokens into the two marked fields below. Until then, submissions are blocked to avoid sending to a dead endpoint.</div>
+        <!-- ZOHO WEB-TO-LEAD FORM (no backend required) -->
+        <form id="leadForm" action="https://crm.zoho.com/crm/WebToLeadForm" method="POST" accept-charset="UTF-8" onsubmit="return prepLead()">
+          <!-- ===== PASTE YOUR ZOHO TOKENS HERE ===== -->
+          <input type="hidden" name="xnQsjsdp" id="zoho_xnQsjsdp" value="PASTE_ZOHO_XNQSJSDP">
+          <input type="hidden" name="xmIwtLD"  id="zoho_xmIwtLD"  value="PASTE_ZOHO_XMIWTLD">
+          <input type="hidden" name="actionType" value="TGVhZHM=">
+          <input type="hidden" name="returnURL" value="https://YOUR-GITHUB-USERNAME.github.io/CMHC-Rental/thank-you.html">
+          <!-- ======================================== -->
+          <input type="hidden" name="Lead Source" value="Website — CMHC Calculator">
+          <input type="text"  name="Last Name"  placeholder="Full name *" required>
+          <input type="email" name="Email"      placeholder="Email *" required>
+          <input type="tel"   name="Phone"      placeholder="Phone">
+          <input type="text"  name="Company"    placeholder="City / project location">
+          <textarea name="Description" id="leadDesc" placeholder="Tell me about your project (units, location, budget)…"></textarea>
+          <button class="btn gold" type="submit" style="width:100%">Send my details</button>
+          <div class="formnote">Your project estimate from the calculator above is attached automatically. By submitting you agree to be contacted about your inquiry.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="font-weight:800;color:#fff;font-size:16px">Hamed Ashouri — Mortgage Advisory</div>
+    <div style="margin-top:4px">Ontario · <a href="mailto:hamedmortgages@gmail.com">hamedmortgages@gmail.com</a></div>
+    <div class="disc"><b>Disclaimer:</b> This page and its calculator are for educational and discussion purposes only and do not constitute a quote, pre-approval, mortgage advice for a specific transaction, or a commitment to lend. CMHC program terms, premiums, and ratios are subject to change and must be confirmed with a CMHC-approved lender and current CMHC guidance. Estimates depend entirely on the assumptions entered. CMHC multi-unit / MLI Select requires a minimum of 5 units; smaller projects are financed conventionally.</div>
+    <div class="src" style="color:#8a93b8">Sources: CMHC MLI Select &amp; Multi-Unit Fees &amp; Premiums (eff. July 14, 2025); CMHC 2025 Rental Market Report; TRREB Q1-2025; Colliers/CBRE 2025 cap-rate reports; Altus 2025 Cost Guide; City of Toronto multiplex bylaws; Elevate Realty Toronto Multiplex Guide 2026.</div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CMHC RENTAL CALCULATOR — client-facing engine
+   (same logic as the broker dashboard, simplified inputs)
+   ============================================================ */
+const $=id=>document.getElementById(id);
+const S={scenario:'buy',path:'cmhc',points:100};
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+const pct=n=>(n*100).toFixed(1)+'%';
+const num=id=>parseFloat($(id).value)||0;
+const TIER={50:{ltc:.85,ltcNew:.95,amort:40,disc:.10},70:{ltc:.95,ltcNew:.95,amort:45,disc:.20},100:{ltc:.95,ltcNew:.95,amort:50,disc:.30}};
+function basePrem(ltv,c){const t=[[.65,3.25,2.60],[.70,3.75,2.85],[.75,4.25,3.35],[.80,5.00,4.35],[.85,6.00,5.35],[.90,6.75,5.90],[1,7.00,6.15]];for(const r of t)if(ltv<=r[0]+1e-9)return(c?r[1]:r[2])/100;return(c?7:6.15)/100;}
+const K=(r,y)=>{const i=r/12,n=y*12;return i/(1-Math.pow(1+i,-n))*12;};
+
+function seg(id,key,cb){$(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{$(id).querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');S[key]=isNaN(+b.dataset.v)?b.dataset.v:+b.dataset.v;cb&&cb();calc();});}
+seg('segScenario','scenario',()=>{$('buyBox').style.display=S.scenario==='build'?'none':'block';$('buildBox').style.display=S.scenario==='build'?'block':'none';});
+seg('segPath','path',()=>{$('ptBox').style.display=S.path==='cmhc'?'block':'none';});
+seg('segPoints','points');
+
+let LAST={};
+function calc(){
+  const units=Math.max(1,Math.round(num('units')));
+  let path=S.path, elig=units>=5;
+  if(!elig&&path==='cmhc')path='conv';
+  $('eligNote').innerHTML = elig
+    ? '<span style="color:#2E7D5B">✓ '+units+' units — eligible for CMHC MLI Select.</span>'
+    : '<span style="color:#B5462F">⚠ Under 5 units — not CMHC multi-unit eligible; using conventional.</span>';
+
+  // costs
+  let TPC,costLabel;
+  if(S.scenario==='build'){TPC=num('land')+units*num('usf')*num('psf');TPC*=1.27;costLabel='Total project cost';}
+  else {TPC=num('pp')*1.035;costLabel='All-in cost';}
+  // (build: +27% covers soft costs, contingency, financing reserve as a blended estimate)
+
+  // income
+  const rent=num('rent'),GPR=units*rent*12,vac=GPR*num('vac')/100,EGI=GPR-vac;
+  const opex=EGI*num('exp')/100,NOI=EGI-opex;
+  const cap=num('cap')/100,stab=cap>0?NOI/cap:0;
+
+  // financing
+  const isC=S.scenario==='build';
+  const vb=isC?TPC:Math.min(TPC,stab||TPC);
+  let amort,dcrMin,levCap,label;
+  if(path==='cmhc'&&elig){const t=TIER[S.points];amort=t.amort;dcrMin=1.10;levCap=isC?t.ltcNew:t.ltc;label='CMHC '+S.points+'pts';}
+  else{amort=30;dcrMin=1.20;levCap=1-num('down')/100;label='Conventional';}
+  const k=K(num('rate')/100,amort);
+  const maxLev=levCap*vb,maxDCR=(NOI/dcrMin)/k,loan=Math.max(0,Math.min(maxLev,maxDCR));
+  const bind=maxDCR<maxLev?'DCR':'Leverage',ltv=vb>0?loan/vb:0;
+
+  let prem=0,eff=0,pst=0;
+  if(path==='cmhc'&&elig){const b=basePrem(ltv,isC),sur=Math.max(0,Math.ceil((amort-25)/5))*0.0025;eff=(b+sur)*(1-TIER[S.points].disc);prem=eff*loan;pst=prem*0.08;}
+  const closing=path==='cmhc'?0:TPC*0.012;
+  const equity=Math.max(0,TPC-loan),ctc=equity+pst+closing;
+  const cash=num('cash'),gap=cash-ctc;
+  const ds=loan*k,dcr=ds>0?NOI/ds:0,cf=NOI-ds,coc=ctc>0?cf/ctc:0;
+  const profit=stab-TPC,margin=TPC>0?profit/TPC:0;
+
+  // verdict
+  const dcrOK=dcr>=dcrMin-1e-6,cashOK=gap>=-1;
+  const good=dcrOK&&margin>=0.10&&coc>=0&&cashOK, bad=(!dcrOK)||margin<0||!cashOK;
+  let vc,vb2,vd;
+  if(good){vc='v-go';vb2='Looks promising';vd='Debt coverage holds, there’s positive margin, and your cash covers the close. Worth a full analysis.';}
+  else if(bad){vc='v-no';vb2='Needs restructuring';vd=(!cashOK?'You’re short on cash. ':'')+(!dcrOK?'Debt coverage is below minimum. ':'')+(margin<0?'Costs exceed the stabilized value. ':'')+'Let’s adjust the numbers together.';}
+  else{vc='v-mid';vb2='Marginal — worth a closer look';vd='The deal is workable but thin. A full analysis will show where the cushion is.';}
+  $('verdict').className='verdict '+vc;
+  $('verdict').innerHTML='<div class="b">'+vb2+'</div><div class="d">'+vd+'</div>';
+
+  $('kp').innerHTML=[
+    ['dark','You could finance',fmt(loan),(path==='cmhc'&&elig?'up to '+(levCap*100)+'% · ':'')+'bound by '+bind],
+    ['','Cash to get in',fmt(ctc),(gap>=0?'you have enough':'short '+fmt(-gap))],
+    ['','Yearly cash flow',fmt(cf),'cash-on-cash '+pct(coc)],
+    ['','Value when stabilized',fmt(stab),'profit '+pct(margin)],
+  ].map(k=>`<div class="k ${k[0]}"><div class="l">${k[1]}</div><div class="v">${k[2]}</div><div class="s">${k[3]}</div></div>`).join('');
+
+  $('mini').innerHTML=
+    `<tr><td>Net operating income</td><td>${fmt(NOI)}</td></tr>`+
+    `<tr><td>${costLabel}</td><td>${fmt(TPC)}</td></tr>`+
+    `<tr><td>Supportable loan (${label})</td><td>${fmt(loan)}</td></tr>`+
+    `<tr><td>Equity required</td><td>${fmt(equity)}</td></tr>`+
+    (prem>0?`<tr><td>CMHC premium (est.)</td><td>${fmt(prem)}</td></tr>`:'')+
+    `<tr class="t"><td>Cash to close</td><td>${fmt(ctc)}</td></tr>`;
+
+  $('cashFlag').innerHTML = gap>=0
+    ? '<div class="flag ok">✓ Your '+fmt(cash)+' covers the close, with '+fmt(gap)+' to spare.</div>'
+    : '<div class="flag bad">Your cash is '+fmt(-gap)+' short of what this version needs. We can adjust price, scope, or leverage.</div>';
+
+  LAST={units,scenario:S.scenario,path:label,TPC,NOI,loan,equity,ctc,cash,gap,cf,coc,stab,margin,dcr};
+}
+
+// attach calculator summary to the lead form before submit
+function prepLead(){
+  // build a readable summary into the Description field
+  const L=LAST||{};
+  const sum='\n\n--- Calculator estimate ---\n'+
+    'Scenario: '+(L.scenario||'')+' · Units: '+(L.units||'')+' · Path: '+(L.path||'')+'\n'+
+    'All-in cost: '+fmt(L.TPC||0)+' · NOI: '+fmt(L.NOI||0)+'\n'+
+    'Supportable loan: '+fmt(L.loan||0)+' · Equity: '+fmt(L.equity||0)+' · Cash to close: '+fmt(L.ctc||0)+'\n'+
+    'Client cash: '+fmt(L.cash||0)+' · Surplus/short: '+fmt(L.gap||0)+'\n'+
+    'Cash-on-cash: '+pct(L.coc||0)+' · Stabilized value: '+fmt(L.stab||0)+' · Margin: '+pct(L.margin||0);
+  const d=$('leadDesc'); d.value=(d.value||'')+sum;
+  // config guard: block submit until Zoho tokens are pasted
+  const t1=$('zoho_xnQsjsdp').value, t2=$('zoho_xmIwtLD').value;
+  if(t1.indexOf('PASTE')===0 || t2.indexOf('PASTE')===0){
+    alert('This form isn’t connected to Zoho yet. Add your Web-to-Lead tokens (see the deployment guide) to enable submissions.');
+    return false;
+  }
+  return true;
+}
+
+// init
+$('ptBox').style.display='block';
+document.querySelectorAll('#calc input, #calc select').forEach(el=>el.addEventListener('input',calc));
+calc();
+</script>
+</body>
+</html>
