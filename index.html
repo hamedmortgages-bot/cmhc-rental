@@ -12,7 +12,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="CMHC Rental Financing & MLI Select Calculator">
 <meta property="og:description" content="Estimate your CMHC / MLI Select rental project — debt sizing, equity, premium, and returns — in plain language, English or Persian. Then get a full analysis from a licensed mortgage broker.">
@@ -75,7 +74,8 @@
   .btn.outline{background:#fff;color:var(--navy);border-color:var(--navy)}
   .btn.outline:hover{background:var(--navy);color:#fff}
   /* PDF report (off-screen, rendered to PDF on demand) */
-  #report{position:fixed;left:-9999px;top:0;width:760px;background:#fff;color:#222826;font-family:"Manrope",Arial,sans-serif;padding:32px 36px;line-height:1.5}
+  #report{display:none;width:100%;background:#fff;color:#222826;font-family:"Manrope",Arial,sans-serif;line-height:1.5}
+  @media print{html,body{background:#fff!important}@page{margin:14mm}body>*{display:none!important}#report{display:block!important}}
   #report[dir=rtl]{font-family:"Vazirmatn",Tahoma,Arial,sans-serif}
   #report .rh{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #0F3D2E;padding-bottom:12px;margin-bottom:16px}
   #report .rbrand b{color:#0F3D2E;font-size:19px}#report .rbrand span{display:block;color:#7A857F;font-size:11px;letter-spacing:.5px}
@@ -374,7 +374,8 @@
         <div class="kp" id="kp"></div>
         <table class="mini" id="mini"></table>
         <div id="cashFlag"></div>
-        <button type="button" class="btn outline" id="repBtn" onclick="downloadReport()" style="margin-top:14px;width:100%" data-i18n="rep_btn">⬇ Download my report (PDF)</button>
+        <button type="button" class="btn outline" id="repBtn" onclick="downloadReport()" style="margin-top:14px;width:100%" data-i18n="rep_btn">📄 Download my report (PDF)</button>
+        <div class="formnote" style="text-align:center;margin-top:5px" data-i18n="rep_hint">Opens your print view — choose “Save as PDF”.</div>
         <a class="btn gold" href="#start" style="margin-top:10px;width:100%;text-align:center" id="ctaBtn" data-i18n="res_cta">Get my full, deal-specific analysis →</a>
       </div>
     </div></div>
@@ -620,7 +621,8 @@ const STR={
   f_down_h:{en:"Only used for a regular mortgage. <b>Example:</b> 25%.",fa:"فقط برای وام معمولی استفاده می‌شود. <b>مثال:</b> ۲۵٪."},
   res_h:{en:"Your estimate",fa:"برآورد شما"},
   res_cta:{en:"Get my full, deal-specific analysis →",fa:"دریافت تحلیل کامل و اختصاصی ←"},
-  rep_btn:{en:"⬇ Download my report (PDF)",fa:"⬇ دانلود گزارش من (PDF)"},
+  rep_btn:{en:"📄 Download my report (PDF)",fa:"📄 دانلود گزارش من (PDF)"},
+  rep_hint:{en:"Opens your print view — choose “Save as PDF”.",fa:"نمای چاپ باز می‌شود — گزینه‌ی «ذخیره به‌صورت PDF» را انتخاب کنید."},
   rep_title:{en:"CMHC Rental Project — Estimate Report",fa:"پروژه‌ی اجاره‌ای CMHC — گزارش برآورد"},
   rep_prepared:{en:"Prepared",fa:"تاریخ تهیه"},
   rep_inputs:{en:"Your inputs",fa:"ورودی‌های شما"},
@@ -881,9 +883,12 @@ function buildReport(){
   return R;
 }
 function downloadReport(){
-  if(typeof html2pdf==='undefined'){alert(tr('rep_err'));return;}
-  const R=buildReport(), fn='CMHC-Rental-Report-'+(LANG==='fa'?'FA':'EN')+'.pdf';
-  html2pdf().set({margin:[10,10,10,10],filename:fn,image:{type:'jpeg',quality:.98},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff'},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}}).from(R).save();
+  buildReport();
+  var oldTitle=document.title;
+  document.title='CMHC-Rental-Report-'+(LANG==='fa'?'FA':'EN');
+  function restore(){document.title=oldTitle;window.removeEventListener('afterprint',restore);}
+  window.addEventListener('afterprint',restore);
+  window.print();
 }
 </script>
 <!-- FAQ structured data for search engines -->
