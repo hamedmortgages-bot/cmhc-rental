@@ -74,8 +74,7 @@
   .btn.outline{background:#fff;color:var(--navy);border-color:var(--navy)}
   .btn.outline:hover{background:var(--navy);color:#fff}
   /* PDF report (off-screen, rendered to PDF on demand) */
-  #report{display:none;width:100%;background:#fff;color:#222826;font-family:"Manrope",Arial,sans-serif;line-height:1.5}
-  @media print{html,body{background:#fff!important}@page{margin:14mm}body>*{display:none!important}#report{display:block!important}}
+  #report{display:none}
   #report[dir=rtl]{font-family:"Vazirmatn",Tahoma,Arial,sans-serif}
   #report .rh{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #0F3D2E;padding-bottom:12px;margin-bottom:16px}
   #report .rbrand b{color:#0F3D2E;font-size:19px}#report .rbrand span{display:block;color:#7A857F;font-size:11px;letter-spacing:.5px}
@@ -622,14 +621,14 @@ const STR={
   res_h:{en:"Your estimate",fa:"برآورد شما"},
   res_cta:{en:"Get my full, deal-specific analysis →",fa:"دریافت تحلیل کامل و اختصاصی ←"},
   rep_btn:{en:"📄 Download my report (PDF)",fa:"📄 دانلود گزارش من (PDF)"},
-  rep_hint:{en:"Opens your print view — choose “Save as PDF”.",fa:"نمای چاپ باز می‌شود — گزینه‌ی «ذخیره به‌صورت PDF» را انتخاب کنید."},
+  rep_hint:{en:"Opens your report in a new tab — tap “Save as PDF”.",fa:"گزارش در یک تب جدید باز می‌شود — «ذخیره به‌صورت PDF» را بزنید."},
+  rep_err:{en:"Please allow pop-ups to open your report.",fa:"برای باز شدن گزارش، لطفاً پنجره‌های بازشو را مجاز کنید."},
   rep_title:{en:"CMHC Rental Project — Estimate Report",fa:"پروژه‌ی اجاره‌ای CMHC — گزارش برآورد"},
   rep_prepared:{en:"Prepared",fa:"تاریخ تهیه"},
   rep_inputs:{en:"Your inputs",fa:"ورودی‌های شما"},
   rep_results:{en:"Your estimate",fa:"برآورد شما"},
   rep_cta_t:{en:"Get your full, deal-specific analysis — free.",fa:"تحلیل کامل و اختصاصی معامله‌تان را رایگان بگیرید."},
   rep_cta_p:{en:"Hamed Ashouri, Mortgage Advisory · Ontario",fa:"حامد عاشوری، مشاوره وام مسکن · انتاریو"},
-  rep_err:{en:"Report generator is still loading — please try again in a moment.",fa:"تولیدکننده‌ی گزارش هنوز بارگذاری می‌شود — لطفاً یک لحظه بعد دوباره تلاش کنید."},
   calc_foot:{en:"Estimate only. Figures depend on your inputs and current CMHC rules; confirm with a CMHC-approved lender. Projects under 5 units are financed with a regular mortgage, not under CMHC multi-unit.",fa:"فقط برآورد. ارقام به ورودی‌های شما و قوانین فعلی CMHC بستگی دارد؛ با یک وام‌دهنده‌ی مورد تأیید CMHC تأیید کنید. پروژه‌های زیر ۵ واحد با وام معمولی تأمین می‌شوند، نه برنامه‌ی چندواحدی CMHC."},
   rx_kick:{en:"Make sense of it",fa:"درکش کنید"},
   rx_h2:{en:"Your results, explained",fa:"نتایج شما، توضیح داده‌شده"},
@@ -884,11 +883,30 @@ function buildReport(){
 }
 function downloadReport(){
   buildReport();
-  var oldTitle=document.title;
-  document.title='CMHC-Rental-Report-'+(LANG==='fa'?'FA':'EN');
-  function restore(){document.title=oldTitle;window.removeEventListener('afterprint',restore);}
-  window.addEventListener('afterprint',restore);
-  window.print();
+  var rtl=LANG==='fa';
+  var inner=document.getElementById('report').innerHTML;
+  var end=rtl?'left':'right';
+  var fam=rtl?'"Vazirmatn",Tahoma,Arial,sans-serif':'"Manrope",Arial,sans-serif';
+  var fonts='<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">';
+  var css='*{box-sizing:border-box}body{margin:0;background:#fff;color:#222826;font-family:'+fam+';line-height:1.5}'
+   +'.savebar{position:sticky;top:0;background:#0F3D2E;padding:10px 28px;text-align:'+end+'}'
+   +'.savebar button{background:#C5A249;color:#0F3D2E;border:0;border-radius:8px;padding:9px 16px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit}'
+   +'.wrap{max-width:760px;margin:0 auto;padding:28px}'
+   +'.rh{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #0F3D2E;padding-bottom:12px;margin-bottom:16px}'
+   +'.rbrand b{color:#0F3D2E;font-size:19px}.rbrand span{display:block;color:#7A857F;font-size:11px;letter-spacing:.5px}'
+   +'.rtag{color:#C5A249;font-weight:800;font-size:11px;text-transform:uppercase;max-width:240px;text-align:'+end+'}'
+   +'h2{color:#0F3D2E;font-size:21px;margin:0 0 4px}.rmeta{color:#7A857F;font-size:12px;margin-bottom:14px}'
+   +'h3{color:#0F3D2E;font-size:13px;text-transform:uppercase;letter-spacing:.5px;margin:16px 0 6px;border-bottom:1px solid #E4E8E5;padding-bottom:4px}'
+   +'table{width:100%;border-collapse:collapse;font-size:13px}td{padding:6px 2px;border-bottom:1px solid #EEF1EF}td:last-child{text-align:'+end+';font-weight:700;color:#0F3D2E}'
+   +'.verd{margin:14px 0;padding:11px 14px;border-radius:10px;background:#E7F0EA;border:1px solid #1C6B50;color:#15523E;font-weight:700;font-size:14px}'
+   +'.rcontact{margin-top:14px;background:#0F3D2E;color:#EAF0EC;border-radius:10px;padding:13px 16px;font-size:12.5px}.rcontact b{color:#fff}'
+   +'.rdisc{font-size:10px;color:#7A857F;line-height:1.5;margin-top:14px;border-top:1px solid #E4E8E5;padding-top:8px}'
+   +'@media print{.savebar{display:none}.wrap{padding:0}@page{margin:14mm}}';
+  var save=rtl?'ذخیره به‌صورت PDF':'Save as PDF';
+  var doc='<!doctype html><html lang="'+LANG+'" dir="'+(rtl?'rtl':'ltr')+'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CMHC-Rental-Report-'+(rtl?'FA':'EN')+'</title>'+fonts+'<style>'+css+'</style></head><body><div class="savebar"><button onclick="window.print()">'+save+'</button></div><div class="wrap">'+inner+'</div></body></html>';
+  var w=window.open('','_blank');
+  if(!w){alert(tr('rep_err'));return;}
+  w.document.open();w.document.write(doc);w.document.close();
 }
 </script>
 <!-- FAQ structured data for search engines -->
