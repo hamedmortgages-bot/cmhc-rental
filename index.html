@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="CMHC Rental Financing & MLI Select Calculator">
 <meta property="og:description" content="Estimate your CMHC / MLI Select rental project — debt sizing, equity, premium, and returns — in plain language, English or Persian. Then get a full analysis from a licensed mortgage broker.">
@@ -71,6 +72,26 @@
   .btn.gold:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
   .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
   .btn.ghost:hover{background:#fff;color:var(--navy)}
+  .btn.outline{background:#fff;color:var(--navy);border-color:var(--navy)}
+  .btn.outline:hover{background:var(--navy);color:#fff}
+  /* PDF report (off-screen, rendered to PDF on demand) */
+  #report{position:fixed;left:-9999px;top:0;width:760px;background:#fff;color:#222826;font-family:"Manrope",Arial,sans-serif;padding:32px 36px;line-height:1.5}
+  #report[dir=rtl]{font-family:"Vazirmatn",Tahoma,Arial,sans-serif}
+  #report .rh{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #0F3D2E;padding-bottom:12px;margin-bottom:16px}
+  #report .rbrand b{color:#0F3D2E;font-size:19px}#report .rbrand span{display:block;color:#7A857F;font-size:11px;letter-spacing:.5px}
+  #report .rtag{color:#C5A249;font-weight:800;font-size:11px;text-transform:uppercase;max-width:240px;text-align:right}
+  #report[dir=rtl] .rtag{text-align:left}
+  #report h2{color:#0F3D2E;font-size:21px;margin:0 0 4px}
+  #report .rmeta{color:#7A857F;font-size:12px;margin-bottom:14px}
+  #report h3{color:#0F3D2E;font-size:13px;text-transform:uppercase;letter-spacing:.5px;margin:16px 0 6px;border-bottom:1px solid #E4E8E5;padding-bottom:4px}
+  #report table{width:100%;border-collapse:collapse;font-size:13px}
+  #report td{padding:6px 2px;border-bottom:1px solid #EEF1EF}
+  #report td:last-child{text-align:right;font-weight:700;color:#0F3D2E}
+  #report[dir=rtl] td:last-child{text-align:left}
+  #report .verd{margin:14px 0;padding:11px 14px;border-radius:10px;background:#E7F0EA;border:1px solid #1C6B50;color:#15523E;font-weight:700;font-size:14px}
+  #report .rcontact{margin-top:14px;background:#0F3D2E;color:#EAF0EC;border-radius:10px;padding:13px 16px;font-size:12.5px}
+  #report .rcontact b{color:#fff}
+  #report .rdisc{font-size:10px;color:#7A857F;line-height:1.5;margin-top:14px;border-top:1px solid #E4E8E5;padding-top:8px}
   .hero .orb{position:absolute;border-radius:50%;background:rgba(255,255,255,.05)}
   .o1{width:340px;height:340px;right:-80px;top:-90px}.o2{width:200px;height:200px;right:140px;bottom:-70px}
   /* sections */
@@ -353,7 +374,8 @@
         <div class="kp" id="kp"></div>
         <table class="mini" id="mini"></table>
         <div id="cashFlag"></div>
-        <a class="btn gold" href="#start" style="margin-top:14px;width:100%;text-align:center" id="ctaBtn" data-i18n="res_cta">Get my full, deal-specific analysis →</a>
+        <button type="button" class="btn outline" id="repBtn" onclick="downloadReport()" style="margin-top:14px;width:100%" data-i18n="rep_btn">⬇ Download my report (PDF)</button>
+        <a class="btn gold" href="#start" style="margin-top:10px;width:100%;text-align:center" id="ctaBtn" data-i18n="res_cta">Get my full, deal-specific analysis →</a>
       </div>
     </div></div>
     <p class="formnote" style="margin-top:10px" data-i18n="calc_foot">Estimate only. Figures depend on your inputs and current CMHC rules; confirm with a CMHC-approved lender. Projects under 5 units are financed with a regular mortgage, not under CMHC multi-unit.</p>
@@ -483,6 +505,8 @@
   </div>
 </footer>
 
+<div id="report" aria-hidden="true"></div>
+
 <script>
 /* ============================================================
    i18n LAYER — swaps DISPLAY TEXT only. The calculation engine
@@ -596,6 +620,14 @@ const STR={
   f_down_h:{en:"Only used for a regular mortgage. <b>Example:</b> 25%.",fa:"فقط برای وام معمولی استفاده می‌شود. <b>مثال:</b> ۲۵٪."},
   res_h:{en:"Your estimate",fa:"برآورد شما"},
   res_cta:{en:"Get my full, deal-specific analysis →",fa:"دریافت تحلیل کامل و اختصاصی ←"},
+  rep_btn:{en:"⬇ Download my report (PDF)",fa:"⬇ دانلود گزارش من (PDF)"},
+  rep_title:{en:"CMHC Rental Project — Estimate Report",fa:"پروژه‌ی اجاره‌ای CMHC — گزارش برآورد"},
+  rep_prepared:{en:"Prepared",fa:"تاریخ تهیه"},
+  rep_inputs:{en:"Your inputs",fa:"ورودی‌های شما"},
+  rep_results:{en:"Your estimate",fa:"برآورد شما"},
+  rep_cta_t:{en:"Get your full, deal-specific analysis — free.",fa:"تحلیل کامل و اختصاصی معامله‌تان را رایگان بگیرید."},
+  rep_cta_p:{en:"Hamed Ashouri, Mortgage Advisory · Ontario",fa:"حامد عاشوری، مشاوره وام مسکن · انتاریو"},
+  rep_err:{en:"Report generator is still loading — please try again in a moment.",fa:"تولیدکننده‌ی گزارش هنوز بارگذاری می‌شود — لطفاً یک لحظه بعد دوباره تلاش کنید."},
   calc_foot:{en:"Estimate only. Figures depend on your inputs and current CMHC rules; confirm with a CMHC-approved lender. Projects under 5 units are financed with a regular mortgage, not under CMHC multi-unit.",fa:"فقط برآورد. ارقام به ورودی‌های شما و قوانین فعلی CMHC بستگی دارد؛ با یک وام‌دهنده‌ی مورد تأیید CMHC تأیید کنید. پروژه‌های زیر ۵ واحد با وام معمولی تأمین می‌شوند، نه برنامه‌ی چندواحدی CMHC."},
   rx_kick:{en:"Make sense of it",fa:"درکش کنید"},
   rx_h2:{en:"Your results, explained",fa:"نتایج شما، توضیح داده‌شده"},
@@ -824,6 +856,35 @@ function prepLead(){
 $('ptBox').style.display='block';
 document.querySelectorAll('#calc input, #calc select').forEach(el=>el.addEventListener('input',calc));
 calc();
+
+/* ---- Downloadable PDF report (client-side, bilingual) ---- */
+function rrow(l,v){return '<tr><td>'+l+'</td><td>'+v+'</td></tr>';}
+function buildReport(){
+  const L=LAST||{}, rtl=LANG==='fa';
+  const scen={buy:tr('f_scn_buy'),build:tr('f_scn_build'),convert:tr('f_scn_conv')}[L.scenario]||'';
+  const units=Math.max(1,Math.round(num('units')));
+  let inp=rrow(tr('f_scenario'),scen)+rrow(tr('f_units'),units)+rrow(tr('f_cash'),fmt(num('cash')));
+  if(L.scenario==='build'){inp+=rrow(tr('f_land'),fmt(num('land')))+rrow(tr('f_psf'),'$'+num('psf'))+rrow(tr('f_usf'),num('usf'));}
+  else{inp+=rrow(tr('f_pp'),fmt(num('pp')));}
+  inp+=rrow(tr('f_rent'),fmt(num('rent')))+rrow(tr('f_rate'),num('rate')+'%')+rrow(tr('f_path'),L.path||'');
+  let res=rrow(tr('kp_loan'),fmt(L.loan||0))+rrow(tr('m_noi'),fmt(L.NOI||0))+rrow(tr('m_equity'),fmt(L.equity||0))+rrow(tr('kp_cash'),fmt(L.ctc||0))+rrow(tr('kp_cf'),fmt(L.cf||0)+' ('+tr('kp_coc')+' '+pct(L.coc||0)+')')+rrow(tr('kp_val'),fmt(L.stab||0)+' ('+tr('kp_profit')+' '+pct(L.margin||0)+')')+rrow('DCR',(L.dcr||0).toFixed(2)+'×');
+  const verd=(document.getElementById('verdict').innerText||'').replace(/\s+/g,' ').trim();
+  const d=new Date().toLocaleDateString(rtl?'fa-IR':'en-CA');
+  const R=document.getElementById('report'); R.setAttribute('dir',rtl?'rtl':'ltr');
+  R.innerHTML='<div class="rh"><div class="rbrand"><b>Hamed Ashouri</b><span>'+tr('nav_sub')+'</span></div><div class="rtag">'+tr('hero_badge')+'</div></div>'+
+    '<h2>'+tr('rep_title')+'</h2><div class="rmeta">'+tr('rep_prepared')+': '+d+'</div>'+
+    '<div class="verd">'+verd+'</div>'+
+    '<h3>'+tr('rep_inputs')+'</h3><table>'+inp+'</table>'+
+    '<h3>'+tr('rep_results')+'</h3><table>'+res+'</table>'+
+    '<div class="rcontact"><b>'+tr('rep_cta_t')+'</b><br>'+tr('rep_cta_p')+' — hamedmortgages@gmail.com · (416) 856-8148</div>'+
+    '<div class="rdisc">'+tr('ft_disc').replace(/<[^>]+>/g,'')+'</div>';
+  return R;
+}
+function downloadReport(){
+  if(typeof html2pdf==='undefined'){alert(tr('rep_err'));return;}
+  const R=buildReport(), fn='CMHC-Rental-Report-'+(LANG==='fa'?'FA':'EN')+'.pdf';
+  html2pdf().set({margin:[10,10,10,10],filename:fn,image:{type:'jpeg',quality:.98},html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff'},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}}).from(R).save();
+}
 </script>
 <!-- FAQ structured data for search engines -->
 <script type="application/ld+json">
