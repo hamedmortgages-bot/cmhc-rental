@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CMHC Rental Financing & MLI Select Calculator | Hamed Ashouri, Ontario Mortgage Broker</title>
-<meta name="description" content="Free CMHC rental financing calculator for Ontario investors. Estimate your MLI Select debt sizing, equity, premium, and returns on a 5+ unit purpose-built rental — then get a deal-specific analysis from a licensed mortgage broker.">
-<meta name="keywords" content="CMHC rental financing, MLI Select, multi-unit mortgage, purpose-built rental, Ontario mortgage broker, rental property calculator, Toronto multiplex financing">
+<meta name="description" content="Free, plain-language CMHC rental financing calculator for Ontario homeowners and investors. See your MLI Select loan, the cash you'd need, and whether the project works — in English or Persian — then get a deal-specific analysis from a licensed mortgage broker.">
+<meta name="keywords" content="CMHC rental financing, MLI Select, multi-unit mortgage, purpose-built rental, Ontario mortgage broker, rental property calculator, Toronto multiplex financing, Persian mortgage broker">
 <meta name="author" content="Hamed Ashouri">
 <link rel="canonical" href="https://hamedmortgages-bot.github.io/cmhc-rental/">
 <meta name="theme-color" content="#1E2761">
-<!-- Open Graph / social sharing -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="CMHC Rental Financing & MLI Select Calculator">
-<meta property="og:description" content="Estimate your CMHC / MLI Select rental project — debt sizing, equity, premium, and returns — then get a full analysis from a licensed mortgage broker.">
+<meta property="og:description" content="Estimate your CMHC / MLI Select rental project — debt sizing, equity, premium, and returns — in plain language, English or Persian. Then get a full analysis from a licensed mortgage broker.">
 <meta property="og:url" content="https://hamedmortgages-bot.github.io/cmhc-rental/">
 <meta property="og:site_name" content="Hamed Ashouri — Mortgage Advisory">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMHC Rental Financing & MLI Select Calculator">
 <meta name="twitter:description" content="Estimate your CMHC rental project and get a deal-specific analysis from a licensed Ontario mortgage broker.">
-<!-- Favicon: inline SVG (navy tile with gold H) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231E2761'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' font-weight='bold' text-anchor='middle' fill='%23B8902E'%3EH%3C/text%3E%3C/svg%3E">
 <style>
   :root{
@@ -29,22 +27,35 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--body);background:#fff;line-height:1.55}
+  /* Persian / RTL */
+  html[dir=rtl] body{font-family:"Vazirmatn",Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.75}
+  html[dir=rtl] .hero p,html[dir=rtl] .lead{max-width:none}
+  html[dir=rtl] nav .links a{margin-left:0;margin-right:20px}
+  html[dir=rtl] .pfx span{left:auto;right:11px}
+  html[dir=rtl] .pfx input{padding-left:10px;padding-right:22px}
+  html[dir=rtl] .mini td:last-child{text-align:left}
+  html[dir=rtl] input[type=number]{direction:ltr;text-align:right}
   .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
   a{color:var(--blue);text-decoration:none}
   /* nav */
   nav{position:sticky;top:0;z-index:50;background:rgba(30,39,97,.97);backdrop-filter:blur(6px);color:#fff}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-  nav .brand{font-weight:800;font-size:16px;color:#fff;letter-spacing:.2px}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+  nav .brand{font-weight:800;font-size:16px;color:#fff;letter-spacing:.2px;white-space:nowrap}
   nav .brand small{display:block;font-weight:400;font-size:11px;color:var(--ice2);letter-spacing:1px}
+  nav .links{display:flex;align-items:center}
   nav .links a{color:var(--ice2);font-size:13.5px;font-weight:600;margin-left:20px}
   nav .links a:hover{color:#fff}
   nav .cta{background:var(--gold);color:#3b2e08!important;padding:8px 14px;border-radius:8px;font-weight:700}
-  @media(max-width:720px){nav .links a:not(.cta){display:none}}
+  .langtog{display:inline-flex;border:1px solid rgba(255,255,255,.35);border-radius:8px;overflow:hidden;margin-left:20px}
+  .langtog button{background:transparent;color:var(--ice2);border:none;padding:7px 11px;font-size:13px;font-weight:700;cursor:pointer}
+  .langtog button.on{background:var(--gold);color:#3b2e08}
+  html[dir=rtl] .langtog{margin-left:0;margin-right:20px}
+  @media(max-width:760px){nav .links a:not(.cta){display:none}.langtog{margin-left:8px}}
   /* hero */
   .hero{background:linear-gradient(160deg,#1E2761 0%,#28346B 70%,#33408a 100%);color:#fff;padding:64px 0 70px;position:relative;overflow:hidden}
   .hero .badge{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
   .hero h1{font-size:42px;font-weight:800;line-height:1.12;margin:14px 0 16px;max-width:760px}
-  .hero p{font-size:17px;color:var(--ice2);max-width:620px}
+  .hero p{font-size:17px;color:var(--ice2);max-width:640px}
   .hero .btns{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
   .btn{display:inline-block;padding:13px 22px;border-radius:9px;font-weight:700;font-size:15px;cursor:pointer;border:none}
   .btn.gold{background:var(--gold);color:#3b2e08}
@@ -55,7 +66,7 @@
   section{padding:56px 0}
   .kick{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
   h2.sec{font-size:28px;color:var(--navy);font-weight:800;margin:8px 0 8px}
-  .lead{font-size:16px;color:var(--body);max-width:760px;margin-bottom:26px}
+  .lead{font-size:16px;color:var(--body);max-width:780px;margin-bottom:26px}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   @media(max-width:820px){.cards{grid-template-columns:1fr}}
   .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 2px 10px rgba(20,30,60,.05)}
@@ -63,6 +74,12 @@
   .card h3{color:var(--navy);font-size:17px;margin-bottom:6px}
   .card p{font-size:14px}
   .alt{background:var(--ice)}
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:820px){.steps{grid-template-columns:1fr}}
+  .step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;position:relative}
+  .step .n{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .step h3{color:var(--navy);font-size:16px;margin-bottom:6px}.step p{font-size:14px}
   /* tiers */
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px}
   @media(max-width:820px){.tiers{grid-template-columns:1fr}}
@@ -71,22 +88,26 @@
   .tier .pt{font-size:30px;font-weight:800;color:var(--navy)}.tier.best .pt{color:#fff}
   .tier .lab{font-size:12px;color:var(--gray);text-transform:uppercase;letter-spacing:1px}.tier.best .lab{color:var(--ice2)}
   .tier ul{list-style:none;margin-top:12px;font-size:13.5px;text-align:left}
+  html[dir=rtl] .tier ul{text-align:right}
   .tier li{padding:4px 0;border-top:1px solid rgba(0,0,0,.06)}.tier.best li{border-color:rgba(255,255,255,.12)}
   /* calculator */
   .calc{background:var(--navy);color:#fff;border-radius:18px;padding:8px;margin-top:6px}
   .calc-inner{background:#fff;color:var(--body);border-radius:14px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
   @media(max-width:860px){.calc-inner{grid-template-columns:1fr}}
-  .field{margin-bottom:13px}
-  label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+  .field{margin-bottom:14px}
+  label{display:block;font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:3px}
   label .h{font-weight:400;color:var(--gray);font-size:11.5px}
+  .help{font-size:12px;color:var(--gray);margin:1px 0 6px;line-height:1.45}
+  .help b{color:var(--body);font-weight:600}
   input[type=number],select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font-size:15px;color:var(--ink)}
   input:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(46,117,182,.12)}
   .pfx{position:relative}.pfx span{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--gray)}.pfx input{padding-left:22px}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .seg{display:flex;gap:6px}.seg button{flex:1;padding:9px 4px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:12.5px;font-weight:600;color:var(--body);cursor:pointer}
+  .seg{display:flex;gap:6px;flex-wrap:wrap}.seg button{flex:1;min-width:84px;padding:9px 4px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:12.5px;font-weight:600;color:var(--body);cursor:pointer}
   .seg button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
   details.adv{margin-top:6px;border-top:1px dashed var(--line);padding-top:10px}
   details.adv summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--blue)}
+  details.adv .help{margin-bottom:10px}
   /* results */
   .res h4{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:10px}
   .verdict{border-radius:12px;padding:14px 16px;margin-bottom:14px}
@@ -105,6 +126,15 @@
   .mini tr.t td{font-weight:800;color:var(--navy)}
   .flag{font-size:12.5px;border-radius:9px;padding:9px 11px;margin-top:11px}
   .flag.ok{background:var(--greenbg);color:#1d5b40}.flag.warn{background:var(--amberbg);color:#6a4e12}.flag.bad{background:var(--redbg);color:#7a2e1c}
+  /* explain blocks */
+  .ex{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:6px}
+  @media(max-width:760px){.ex{grid-template-columns:1fr}}
+  .exc{background:#fff;border:1px solid var(--line);border-radius:13px;padding:20px}
+  .exc h3{color:var(--navy);font-size:16px;margin-bottom:8px}
+  .exc .row{font-size:13.5px;margin-bottom:7px}
+  .exc .row .t{font-weight:700;color:var(--ink);display:block}
+  .exc .tech{font-size:12px;color:var(--gray);margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+  .exc .tech b{color:var(--blue)}
   /* market */
   .bench{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
   @media(max-width:820px){.bench{grid-template-columns:1fr 1fr}}
@@ -131,57 +161,95 @@
 <body>
 
 <nav><div class="wrap">
-  <div class="brand">Hamed Ashouri<small>MORTGAGE ADVISORY · ONTARIO</small></div>
+  <div class="brand">Hamed Ashouri<small data-i18n="nav_sub">MORTGAGE ADVISORY · ONTARIO</small></div>
   <div class="links">
-    <a href="#learn">How it works</a>
-    <a href="#calc">Calculator</a>
-    <a href="#market">Market</a>
-    <a href="#faq">FAQ</a>
-    <a href="#start" class="cta">Get my analysis</a>
+    <a href="#how" data-i18n="nav_how">How it works</a>
+    <a href="#calc" data-i18n="nav_calc">Calculator</a>
+    <a href="#results" data-i18n="nav_results">Results explained</a>
+    <a href="#faq" data-i18n="nav_faq">FAQ</a>
+    <a href="#start" class="cta" data-i18n="nav_cta">Get my analysis</a>
+    <span class="langtog"><button id="langEn" class="on" onclick="setLang('en')">English</button><button id="langFa" onclick="setLang('fa')">فارسی</button></span>
   </div>
 </div></nav>
 
 <header class="hero">
   <div class="orb o1"></div><div class="orb o2"></div>
   <div class="wrap">
-    <div class="badge">CMHC Rental Financing · MLI Select</div>
-    <h1>Finance your rental project with CMHC — and see if it pays before you commit.</h1>
-    <p>Lower down payments, longer amortization, and better rates for purpose-built rental. Learn how the program works, then estimate your own project right here.</p>
+    <div class="badge" data-i18n="hero_badge">CMHC Rental Financing · MLI Select</div>
+    <h1 data-i18n="hero_h1">Thinking of renting out a property? See if the numbers work — before you commit.</h1>
+    <p data-i18n="hero_p">CMHC's rental programs can mean a smaller down payment, a longer payback, and better terms than a regular bank mortgage. This page explains it in plain language and lets you estimate your own project in a couple of minutes — in English or Persian.</p>
     <div class="btns">
-      <a class="btn gold" href="#calc">Try the calculator</a>
-      <!-- BOOKING: routes to the contact form (feeds your CRM + call-back task). To use a real calendar instead, change this href to your Zoho Bookings / Calendly URL. -->
-      <a class="btn ghost" href="#start">📞 Book a free call</a>
-      <a class="btn ghost" href="#learn">Learn the basics</a>
+      <a class="btn gold" href="#calc" data-i18n="hero_btn1">Try the calculator</a>
+      <a class="btn ghost" href="#start" data-i18n="hero_btn2">📞 Book a free call</a>
+      <a class="btn ghost" href="#how" data-i18n="hero_btn3">How it works</a>
     </div>
   </div>
 </header>
 
-<!-- LEARN -->
-<section id="learn">
+<!-- HOW THIS CALCULATOR WORKS -->
+<section id="how">
   <div class="wrap">
-    <div class="kick">The basics</div>
-    <h2 class="sec">What is CMHC rental financing?</h2>
-    <p class="lead">CMHC insures mortgages on rental buildings of 5+ units. That insurance lets lenders offer terms you can't get conventionally — and the flagship program, <b>MLI Select</b>, rewards affordability, energy efficiency, and accessibility with even better financing.</p>
+    <div class="kick" data-i18n="how_kick">Start here</div>
+    <h2 class="sec" data-i18n="how_h2">How this calculator works</h2>
+    <p class="lead" data-i18n="how_lead">You don't need to be a finance person. Answer a few simple questions about the property, and the tool shows you — in everyday words — how big a mortgage it could support, how much of your own cash you'd need, and whether the project looks worth pursuing.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3 data-i18n="how_s1_h">Tell us about the property</h3><p data-i18n="how_s1_p">How many rental units, what it costs to buy or build, and roughly what the rent would be. Each box has a plain-language hint and an example.</p></div>
+      <div class="step"><div class="n">2</div><h3 data-i18n="how_s2_h">We estimate what a lender sees</h3><p data-i18n="how_s2_p">The tool runs the same checks a lender does — the income after costs, whether it covers the loan, and how much they'd lend — using current CMHC rules.</p></div>
+      <div class="step"><div class="n">3</div><h3 data-i18n="how_s3_h">You get a clear read</h3><p data-i18n="how_s3_p">A simple verdict — looks promising, marginal, or needs work — plus the loan, the cash to get in, and the yearly cash flow. Every result is explained below.</p></div>
+    </div>
+    <p class="formnote" style="margin-top:14px" data-i18n="how_note">This is an estimate to help you think it through — not a quote, an approval, or a promise to lend. Your real numbers are confirmed by a CMHC-approved lender.</p>
+  </div>
+</section>
+
+<!-- LEARN -->
+<section id="learn" class="alt">
+  <div class="wrap">
+    <div class="kick" data-i18n="learn_kick">The basics</div>
+    <h2 class="sec" data-i18n="learn_h2">What is CMHC rental financing?</h2>
+    <p class="lead" data-i18n="learn_lead">CMHC is Canada's housing agency. It insures mortgages on rental buildings of 5 or more units, which lets a lender offer you terms you can't get on a regular mortgage. Its main program — <b>MLI Select</b> — gives even better terms when your building is more affordable, more energy-efficient, or more accessible.</p>
     <div class="cards">
-      <div class="card"><div class="ic">🏦</div><h3>Lower down payment</h3><p>Qualifying projects can be financed up to 95% of cost — far less cash in than conventional.</p></div>
-      <div class="card"><div class="ic">📆</div><h3>Longer amortization</h3><p>Up to 50 years, which lowers the monthly payment and supports a larger loan.</p></div>
-      <div class="card"><div class="ic">📉</div><h3>Better rates & terms</h3><p>Insured pricing, plus premium discounts and limited recourse at the top tier.</p></div>
+      <div class="card"><div class="ic">🏦</div><h3 data-i18n="learn_c1_h">Smaller down payment</h3><p data-i18n="learn_c1_p">Qualifying projects can be financed up to 95% of the cost — so you put in far less of your own cash than with a regular mortgage.</p></div>
+      <div class="card"><div class="ic">📆</div><h3 data-i18n="learn_c2_h">Longer to pay it back</h3><p data-i18n="learn_c2_p">Up to 50 years to repay, which lowers the monthly payment and lets the property support a bigger loan.</p></div>
+      <div class="card"><div class="ic">📉</div><h3 data-i18n="learn_c3_h">Better rates & terms</h3><p data-i18n="learn_c3_p">Because the loan is insured, pricing is better — plus discounts on the insurance fee, and reduced personal liability at the top tier.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT LENDERS ARE ESTIMATING -->
+<section id="lenders">
+  <div class="wrap">
+    <div class="kick" data-i18n="lend_kick">Behind the scenes</div>
+    <h2 class="sec" data-i18n="lend_h2">What a lender is really checking</h2>
+    <p class="lead" data-i18n="lend_lead">When you apply, a lender quietly asks four questions. This calculator answers the same four, so nothing in your meeting is a surprise. The plain-language idea comes first; the official term is in the small print, in case you want it.</p>
+    <div class="ex">
+      <div class="exc"><h3 data-i18n="lend_1_h">① What's left after the bills?</h3>
+        <div class="row" data-i18n="lend_1_p">They add up a year of rent, then subtract empty units and running costs (taxes, insurance, repairs, management). What's left is the property's real yearly income.</div>
+        <div class="tech" data-i18n="lend_1_t">Technical term: <b>Net Operating Income (NOI)</b> — rent minus vacancy minus operating expenses.</div></div>
+      <div class="exc"><h3 data-i18n="lend_2_h">② Does that income cover the loan?</h3>
+        <div class="row" data-i18n="lend_2_p">They check that the yearly income comfortably exceeds the yearly mortgage payment — with a cushion, not just barely. This usually decides how much you can borrow.</div>
+        <div class="tech" data-i18n="lend_2_t">Technical term: <b>Debt Coverage Ratio (DCR/DSCR)</b> — income ÷ loan payment. CMHC rental usually wants at least 1.10×.</div></div>
+      <div class="exc"><h3 data-i18n="lend_3_h">③ How much will they lend?</h3>
+        <div class="row" data-i18n="lend_3_p">There's a ceiling based on the property's value or cost — for qualifying CMHC projects, up to 95%. The smaller of "what the income covers" and "this ceiling" wins.</div>
+        <div class="tech" data-i18n="lend_3_t">Technical terms: <b>Loan-to-Value (LTV)</b> and <b>Loan-to-Cost (LTC)</b> — the loan as a share of value or cost.</div></div>
+      <div class="exc"><h3 data-i18n="lend_4_h">④ What do you bring, and what's the fee?</h3>
+        <div class="row" data-i18n="lend_4_p">Whatever the loan doesn't cover, you bring as cash. CMHC also charges a one-time insurance fee, which is reduced for higher-scoring projects.</div>
+        <div class="tech" data-i18n="lend_4_t">Technical terms: <b>Equity / cash-to-close</b> and the <b>CMHC premium</b> (the insurance fee, eff. July 14, 2025).</div></div>
     </div>
   </div>
 </section>
 
 <section class="alt">
   <div class="wrap">
-    <div class="kick">MLI Select</div>
-    <h2 class="sec">Earn points → unlock better terms</h2>
-    <p class="lead">Commit to affordability, energy efficiency, and/or accessibility to earn points. Your total unlocks one of three tiers (minimum 5 units required).</p>
+    <div class="kick" data-i18n="mli_kick">MLI Select</div>
+    <h2 class="sec" data-i18n="mli_h2">Score points → unlock better terms</h2>
+    <p class="lead" data-i18n="mli_lead">You earn points by committing to affordability, energy efficiency, and/or accessibility. Your total lands you in one of three tiers — and the higher the tier, the better the financing (minimum 5 units required).</p>
     <div class="tiers">
-      <div class="tier"><div class="lab">Minimum</div><div class="pt">50 pts</div>
-        <ul><li>Up to 85% LTV / 95% LTC</li><li>Up to 40-year amortization</li><li>10% premium discount</li></ul></div>
-      <div class="tier"><div class="lab">Strong</div><div class="pt">70 pts</div>
-        <ul><li>Up to 95% leverage</li><li>Up to 45-year amortization</li><li>20% premium discount</li></ul></div>
-      <div class="tier best"><div class="lab">Best terms</div><div class="pt">100 pts</div>
-        <ul><li>Up to 95% leverage</li><li>Up to 50-year amortization</li><li>30% premium discount + limited recourse</li></ul></div>
+      <div class="tier"><div class="lab" data-i18n="mli_t1_l">Entry level</div><div class="pt">50 <span data-i18n="mli_pts">pts</span></div>
+        <ul><li data-i18n="mli_t1_a">Up to 85% of value / 95% of cost</li><li data-i18n="mli_t1_b">Up to 40 years to repay</li><li data-i18n="mli_t1_c">10% off the insurance fee</li></ul></div>
+      <div class="tier"><div class="lab" data-i18n="mli_t2_l">Strong</div><div class="pt">70 <span data-i18n="mli_pts">pts</span></div>
+        <ul><li data-i18n="mli_t2_a">Up to 95% financing</li><li data-i18n="mli_t2_b">Up to 45 years to repay</li><li data-i18n="mli_t2_c">20% off the insurance fee</li></ul></div>
+      <div class="tier best"><div class="lab" data-i18n="mli_t3_l">Best terms</div><div class="pt">100 <span data-i18n="mli_pts">pts</span></div>
+        <ul><li data-i18n="mli_t3_a">Up to 95% financing</li><li data-i18n="mli_t3_b">Up to 50 years to repay</li><li data-i18n="mli_t3_c">30% off the fee + reduced personal liability</li></ul></div>
     </div>
   </div>
 </section>
@@ -189,80 +257,136 @@
 <!-- CALCULATOR -->
 <section id="calc">
   <div class="wrap">
-    <div class="kick">Estimate your project</div>
-    <h2 class="sec">Rental project calculator</h2>
-    <p class="lead">Enter your numbers and see the loan you could support, the cash you'd need, and whether the project pencils. This is an estimate for discussion — not a quote or approval.</p>
+    <div class="kick" data-i18n="calc_kick">Estimate your project</div>
+    <h2 class="sec" data-i18n="calc_h2">Rental project calculator</h2>
+    <p class="lead" data-i18n="calc_lead">Fill in what you know — every box has a hint and an example. As you type, the results update instantly. Don't worry about getting everything perfect; you can refine it with me later.</p>
     <div class="calc"><div class="calc-inner">
       <!-- inputs -->
       <div>
-        <div class="field"><label>What are you doing?</label>
+        <div class="field"><label data-i18n="f_scenario">What are you planning to do?</label>
+          <div class="help" data-i18n="f_scenario_h">Pick the closest option. <b>Example:</b> buying a building that already has tenants → "Buy existing".</div>
           <div class="seg" id="segScenario">
-            <button data-v="buy" class="on">Buy existing</button>
-            <button data-v="build">Build new</button>
-            <button data-v="convert">Buy + convert</button>
+            <button data-v="buy" class="on" data-i18n="f_scn_buy">Buy existing</button>
+            <button data-v="build" data-i18n="f_scn_build">Build new</button>
+            <button data-v="convert" data-i18n="f_scn_conv">Buy + convert</button>
           </div></div>
         <div class="row2">
-          <div class="field"><label>Number of units</label><input type="number" id="units" value="6" min="1" step="1"></div>
-          <div class="field"><label>Cash you can invest</label><div class="pfx"><span>$</span><input type="number" id="cash" value="900000" step="10000"></div></div>
+          <div class="field"><label data-i18n="f_units">How many rental units?</label>
+            <div class="help" data-i18n="f_units_h">Separate homes in the building. <b>Example:</b> a triplex = 3. CMHC's program needs 5+.</div>
+            <input type="number" id="units" value="6" min="1" step="1" title="Each unit is a self-contained home with its own kitchen and bathroom."></div>
+          <div class="field"><label data-i18n="f_cash">Cash you can put in</label>
+            <div class="help" data-i18n="f_cash_h">Your own money for the down payment + closing. <b>Example:</b> $900,000.</div>
+            <div class="pfx"><span>$</span><input type="number" id="cash" value="900000" step="10000" title="Savings or equity you can invest, before any loan."></div></div>
         </div>
         <div id="buyBox">
-          <div class="field"><label>Purchase price <span class="h">(+ reno if converting)</span></label><div class="pfx"><span>$</span><input type="number" id="pp" value="2100000" step="25000"></div></div>
+          <div class="field"><label data-i18n="f_pp">Price to buy it <span class="h" data-i18n="f_pp_s">(+ renovation if converting)</span></label>
+            <div class="help" data-i18n="f_pp_h">What you'd pay for the property; add renovation cost if converting. <b>Example:</b> $2,100,000.</div>
+            <div class="pfx"><span>$</span><input type="number" id="pp" value="2100000" step="25000"></div></div>
         </div>
         <div id="buildBox" style="display:none">
           <div class="row2">
-            <div class="field"><label>Land cost</label><div class="pfx"><span>$</span><input type="number" id="land" value="1100000" step="25000"></div></div>
-            <div class="field"><label>Build cost <span class="h">$/SF</span></label><input type="number" id="psf" value="300" step="10"></div>
+            <div class="field"><label data-i18n="f_land">Cost of the land</label>
+              <div class="help" data-i18n="f_land_h">The lot or teardown price. <b>Example:</b> $1,100,000.</div>
+              <div class="pfx"><span>$</span><input type="number" id="land" value="1100000" step="25000"></div></div>
+            <div class="field"><label data-i18n="f_psf">Build cost <span class="h">$/sq ft</span></label>
+              <div class="help" data-i18n="f_psf_h">Rough cost to build, per square foot. <b>Example:</b> $300.</div>
+              <input type="number" id="psf" value="300" step="10"></div>
           </div>
-          <div class="field"><label>Avg unit size <span class="h">SF</span></label><input type="number" id="usf" value="850" step="25"></div>
+          <div class="field"><label data-i18n="f_usf">Average unit size <span class="h">sq ft</span></label>
+            <div class="help" data-i18n="f_usf_h">Typical apartment size. <b>Example:</b> 850 sq ft.</div>
+            <input type="number" id="usf" value="850" step="25"></div>
         </div>
         <div class="row2">
-          <div class="field"><label>Avg rent <span class="h">$/unit/mo</span></label><div class="pfx"><span>$</span><input type="number" id="rent" value="2300" step="25"></div></div>
-          <div class="field"><label>Interest rate <span class="h">%</span></label><input type="number" id="rate" value="4.75" step="0.05"></div>
+          <div class="field"><label data-i18n="f_rent">Monthly rent per unit</label>
+            <div class="help" data-i18n="f_rent_h">What one unit rents for each month. <b>Example:</b> $2,300.</div>
+            <div class="pfx"><span>$</span><input type="number" id="rent" value="2300" step="25" title="Use a realistic market rent for the area."></div></div>
+          <div class="field"><label data-i18n="f_rate">Interest rate <span class="h">%</span></label>
+            <div class="help" data-i18n="f_rate_h">Yearly interest on the loan. <b>Example:</b> 4.75%.</div>
+            <input type="number" id="rate" value="4.75" step="0.05" title="Ask a broker for today's rate — this is only an estimate."></div>
         </div>
-        <div class="field"><label>Financing path</label>
-          <div class="seg" id="segPath"><button data-v="cmhc" class="on">CMHC MLI Select</button><button data-v="conv">Conventional</button></div>
+        <div class="field"><label data-i18n="f_path">How do you want to finance it?</label>
+          <div class="help" data-i18n="f_path_h">CMHC's insured program gives better terms but needs 5+ units. Fewer units → regular mortgage.</div>
+          <div class="seg" id="segPath"><button data-v="cmhc" class="on" data-i18n="f_path_cmhc">CMHC MLI Select</button><button data-v="conv" data-i18n="f_path_conv">Regular mortgage</button></div>
           <div id="eligNote" class="formnote"></div></div>
-        <div class="field" id="ptBox"><label>MLI Select target points</label>
+        <div class="field" id="ptBox"><label data-i18n="f_points">How much will you commit? (CMHC points)</label>
+          <div class="help" data-i18n="f_points_h">More affordable / green / accessible commitments = more points = better terms. Most aim for 100.</div>
           <div class="seg" id="segPoints"><button data-v="50">50</button><button data-v="70">70</button><button data-v="100" class="on">100</button></div></div>
-        <details class="adv"><summary>Advanced assumptions</summary>
-          <div class="row2" style="margin-top:10px">
-            <div class="field"><label>Vacancy <span class="h">%</span></label><input type="number" id="vac" value="3" step="0.5"></div>
-            <div class="field"><label>Operating expenses <span class="h">% of income</span></label><input type="number" id="exp" value="32" step="1"></div>
+        <details class="adv"><summary data-i18n="adv_sum">Fine-tuning (optional — sensible defaults are filled in)</summary>
+          <div class="help" style="margin-top:10px" data-i18n="adv_h">Only change these if you have better numbers. They're the small assumptions behind the estimate.</div>
+          <div class="row2">
+            <div class="field"><label data-i18n="f_vac">Empty-unit allowance <span class="h">%</span></label>
+              <div class="help" data-i18n="f_vac_h">Share of the year units sit empty. <b>Example:</b> 3%.</div>
+              <input type="number" id="vac" value="3" step="0.5"></div>
+            <div class="field"><label data-i18n="f_exp">Running costs <span class="h">% of rent</span></label>
+              <div class="help" data-i18n="f_exp_h">Taxes, insurance, repairs, management as a share of rent. <b>Example:</b> 32%.</div>
+              <input type="number" id="exp" value="32" step="1"></div>
           </div>
           <div class="row2">
-            <div class="field"><label>Cap rate <span class="h">% (value)</span></label><input type="number" id="cap" value="5.0" step="0.1"></div>
-            <div class="field"><label>Down payment <span class="h">% (conv.)</span></label><input type="number" id="down" value="25" step="1"></div>
+            <div class="field"><label data-i18n="f_cap">Valuation rate <span class="h">% (cap rate)</span></label>
+              <div class="help" data-i18n="f_cap_h">Used to estimate the building's value from its income. <b>Example:</b> 5%.</div>
+              <input type="number" id="cap" value="5.0" step="0.1"></div>
+            <div class="field"><label data-i18n="f_down">Down payment <span class="h">% (regular)</span></label>
+              <div class="help" data-i18n="f_down_h">Only used for a regular mortgage. <b>Example:</b> 25%.</div>
+              <input type="number" id="down" value="25" step="1"></div>
           </div>
         </details>
       </div>
       <!-- results -->
       <div class="res">
-        <h4>Your estimate</h4>
+        <h4 data-i18n="res_h">Your estimate</h4>
         <div id="verdict" class="verdict v-go"></div>
         <div class="kp" id="kp"></div>
         <table class="mini" id="mini"></table>
         <div id="cashFlag"></div>
-        <a class="btn gold" href="#start" style="margin-top:14px;width:100%;text-align:center" id="ctaBtn">Get my full, deal-specific analysis →</a>
+        <a class="btn gold" href="#start" style="margin-top:14px;width:100%;text-align:center" id="ctaBtn" data-i18n="res_cta">Get my full, deal-specific analysis →</a>
       </div>
     </div></div>
-    <p class="formnote" style="margin-top:10px">Estimate only. Figures depend on your inputs and current CMHC rules; confirm with a CMHC-approved lender. Projects under 5 units are financed conventionally, not under CMHC multi-unit.</p>
+    <p class="formnote" style="margin-top:10px" data-i18n="calc_foot">Estimate only. Figures depend on your inputs and current CMHC rules; confirm with a CMHC-approved lender. Projects under 5 units are financed with a regular mortgage, not under CMHC multi-unit.</p>
+  </div>
+</section>
+
+<!-- RESULTS EXPLAINED -->
+<section id="results" class="alt">
+  <div class="wrap">
+    <div class="kick" data-i18n="rx_kick">Make sense of it</div>
+    <h2 class="sec" data-i18n="rx_h2">Your results, explained</h2>
+    <p class="lead" data-i18n="rx_lead">Here's what each number actually means — why it matters to you, and how a lender uses it. No jargon required.</p>
+    <div class="ex">
+      <div class="exc"><h3 data-i18n="rx_1_h">💰 "You could finance"</h3>
+        <div class="row"><span class="t" data-i18n="rx_w">What it means</span><span data-i18n="rx_1_w">The size of mortgage this property can realistically support.</span></div>
+        <div class="row"><span class="t" data-i18n="rx_y">Why it matters</span><span data-i18n="rx_1_y">The bigger this is, the less of your own cash you need to bring.</span></div>
+        <div class="row"><span class="t" data-i18n="rx_l">How a lender uses it</span><span data-i18n="rx_1_l">They lend the smaller of what the income covers and what the rules allow.</span></div></div>
+      <div class="exc"><h3 data-i18n="rx_2_h">🔑 "Cash to get in"</h3>
+        <div class="row"><span class="t" data-i18n="rx_w">What it means</span><span data-i18n="rx_2_w">The total cash you need at closing: your down payment, the insurance fee, and closing costs.</span></div>
+        <div class="row"><span class="t" data-i18n="rx_y">Why it matters</span><span data-i18n="rx_2_y">This is the real money you need on hand. The tool flags if your cash falls short.</span></div>
+        <div class="row"><span class="t" data-i18n="rx_l">How a lender uses it</span><span data-i18n="rx_2_l">They confirm you can fund the gap between the loan and the total cost.</span></div></div>
+      <div class="exc"><h3 data-i18n="rx_3_h">📈 "Yearly cash flow"</h3>
+        <div class="row"><span class="t" data-i18n="rx_w">What it means</span><span data-i18n="rx_3_w">The rent left over after running costs and the mortgage payment, each year.</span></div>
+        <div class="row"><span class="t" data-i18n="rx_y">Why it matters</span><span data-i18n="rx_3_y">Positive means the property pays for itself; "cash-on-cash" is the return on your cash.</span></div>
+        <div class="row"><span class="t" data-i18n="rx_l">How a lender uses it</span><span data-i18n="rx_3_l">They want the income safely above the payment — that cushion is the debt-coverage check.</span></div></div>
+      <div class="exc"><h3 data-i18n="rx_4_h">🏢 "Value when stabilized"</h3>
+        <div class="row"><span class="t" data-i18n="rx_w">What it means</span><span data-i18n="rx_4_w">The estimated value of the building once it's fully rented and running.</span></div>
+        <div class="row"><span class="t" data-i18n="rx_y">Why it matters</span><span data-i18n="rx_4_y">Compared to your cost, it shows the equity (profit margin) you'd create.</span></div>
+        <div class="row"><span class="t" data-i18n="rx_l">How a lender uses it</span><span data-i18n="rx_4_l">It can support the loan and a future refinance to pull cash back out.</span></div></div>
+    </div>
   </div>
 </section>
 
 <!-- MARKET -->
-<section id="market" class="alt">
+<section id="market">
   <div class="wrap">
-    <div class="kick">Toronto · 2025–2026</div>
-    <h2 class="sec">What the market looks like</h2>
+    <div class="kick" data-i18n="mk_kick">Toronto · 2025–2026</div>
+    <h2 class="sec" data-i18n="mk_h2">What the market looks like</h2>
+    <p class="lead" data-i18n="mk_lead">Rough benchmarks to sanity-check your inputs. Your own property may differ — these are for orientation.</p>
     <div class="bench">
-      <div class="b"><div class="bl">Avg rent (PBR)</div><div class="bv">$2,073–$2,690</div><div class="bs">1-bed to 2-bed</div></div>
-      <div class="b"><div class="bl">GTA vacancy</div><div class="bv">~3%</div><div class="bs">New builds ~7% at lease-up</div></div>
-      <div class="b"><div class="bl">Cap rate</div><div class="bv">3.5–5.5%</div><div class="bs">By asset & size</div></div>
-      <div class="b"><div class="bl">Build cost</div><div class="bv">$250–400/SF</div><div class="bs">Conversions $40k+/unit</div></div>
+      <div class="b"><div class="bl" data-i18n="mk_b1_l">Avg rent (new rental)</div><div class="bv">$2,073–$2,690</div><div class="bs" data-i18n="mk_b1_s">1-bed to 2-bed</div></div>
+      <div class="b"><div class="bl" data-i18n="mk_b2_l">GTA vacancy</div><div class="bv">~3%</div><div class="bs" data-i18n="mk_b2_s">New builds ~7% at lease-up</div></div>
+      <div class="b"><div class="bl" data-i18n="mk_b3_l">Cap rate</div><div class="bv">3.5–5.5%</div><div class="bs" data-i18n="mk_b3_s">By type & size</div></div>
+      <div class="b"><div class="bl" data-i18n="mk_b4_l">Build cost</div><div class="bv">$250–400/SF</div><div class="bs" data-i18n="mk_b4_s">Conversions $40k+/unit</div></div>
     </div>
     <div class="comp">
-      <b>A real Toronto example.</b> A house on a main road bought for ~<b>$800K</b>, plus ~<b>$150K</b> to legally convert to a triplex (~$340K all-in), produced <b>3 units and $6,000+/month</b> rent with <b>$2,000+/month</b> cash flow. After renovation it appraised around <b>$1.1M</b> — an ~$150K instant equity lift; a refinance pulled out ~$240K, leaving ~$100K in the deal.
-      <div class="src" style="color:#7a5e1a">Source: Elevate Realty, Toronto Multiplex Guide 2026 — illustration; results vary by deal.</div>
+      <span data-i18n="mk_comp"><b>A real Toronto example.</b> A house on a main road bought for ~<b>$800K</b>, plus ~<b>$150K</b> to legally convert to a triplex (~$340K all-in), produced <b>3 units and $6,000+/month</b> rent with <b>$2,000+/month</b> cash flow. After renovation it appraised around <b>$1.1M</b> — an ~$150K instant equity lift; a refinance pulled out ~$240K, leaving ~$100K in the deal.</span>
+      <div class="src" style="color:#7a5e1a" data-i18n="mk_src">Source: Elevate Realty, Toronto Multiplex Guide 2026 — illustration; results vary by deal.</div>
     </div>
   </div>
 </section>
@@ -278,18 +402,18 @@
   .faq details[open] summary{border-bottom:1px solid var(--line)}
   .faq .a{padding:14px 20px 20px;font-size:15px;color:var(--body);line-height:1.6}
 </style>
-<section id="faq">
+<section id="faq" class="alt">
   <div class="wrap">
-    <div class="kick">Common questions</div>
-    <h2 class="sec">CMHC rental financing FAQ</h2>
-    <p class="lead">Straight answers on how CMHC and MLI Select work for purpose-built rental in Ontario.</p>
+    <div class="kick" data-i18n="faq_kick">Common questions</div>
+    <h2 class="sec" data-i18n="faq_h2">CMHC rental financing FAQ</h2>
+    <p class="lead" data-i18n="faq_lead">Straight answers on how CMHC and MLI Select work for rental property in Ontario.</p>
     <div class="faq">
-      <details><summary>How many units do I need to qualify for CMHC?</summary><div class="a">CMHC multi-unit insurance and the MLI Select program require a <b>minimum of 5 units</b> (50 units/beds for retirement homes). Smaller projects — duplex to fourplex — are financed conventionally instead. The calculator above flags this automatically.</div></details>
-      <details><summary>What is MLI Select, and why does it matter?</summary><div class="a">MLI Select is CMHC's flagship rental product. You earn points by committing to <b>affordability, energy efficiency, and/or accessibility</b>, and your point total (50 / 70 / 100) unlocks better terms: up to 95% leverage, amortization up to 50 years, premium discounts, and limited recourse at the top tier.</div></details>
-      <details><summary>How little can I put down?</summary><div class="a">Qualifying MLI Select projects can be financed up to <b>95% of cost (LTC) or value (LTV)</b> — far less cash in than conventional financing. In practice, the supportable loan is usually capped by debt coverage (DCR), not the leverage limit, so the real cash-in depends on the property's income. The calculator shows both.</div></details>
-      <details><summary>What do I have to commit to in exchange?</summary><div class="a">Measurable social outcomes. For example, affordability commitments run a <b>minimum of 10 years</b> (with bonus points for 20). Energy commitments are verified by a qualified professional's attestation, and accessibility against the CSA B651:23 standard. The more you commit, the better your financing.</div></details>
-      <details><summary>Is the calculator a quote or an approval?</summary><div class="a">No. It's an <b>estimate for discussion only</b> — not a quote, pre-approval, or commitment to lend. Actual financing depends on a full application, a CMHC-approved lender's underwriting, current rates, and CMHC approval. Premiums shown reflect CMHC's rates effective July 14, 2025.</div></details>
-      <details><summary>What do you need from me to get started?</summary><div class="a">Just the basics: the property address, unit mix, target rents, your cost budget, and which commitments you'd consider. Send them through the form below and I'll run a full, deal-specific analysis — debt sizing, equity, premium, returns, and a clear recommendation on whether to proceed.</div></details>
+      <details><summary data-i18n="faq_q1">How many units do I need to qualify for CMHC?</summary><div class="a" data-i18n="faq_a1">CMHC's multi-unit insurance and the MLI Select program need a <b>minimum of 5 units</b> (50 units/beds for retirement homes). Smaller projects — a duplex to a fourplex — use a regular mortgage instead. The calculator flags this for you automatically.</div></details>
+      <details><summary data-i18n="faq_q2">What is MLI Select, and why does it matter?</summary><div class="a" data-i18n="faq_a2">MLI Select is CMHC's flagship rental program. You earn points by committing to <b>affordability, energy efficiency, and/or accessibility</b>, and your total (50 / 70 / 100) unlocks better terms: up to 95% financing, up to 50 years to repay, discounts on the insurance fee, and reduced personal liability at the top tier.</div></details>
+      <details><summary data-i18n="faq_q3">How little can I put down?</summary><div class="a" data-i18n="faq_a3">Qualifying MLI Select projects can be financed up to <b>95% of cost or value</b> — far less cash than a regular mortgage. In practice the loan is usually capped by debt coverage (whether the income covers the payment), not the 95% ceiling, so your real cash-in depends on the property's income. The calculator shows both.</div></details>
+      <details><summary data-i18n="faq_q4">What do I have to commit to in exchange?</summary><div class="a" data-i18n="faq_a4">Measurable outcomes. For example, affordability commitments run a <b>minimum of 10 years</b> (with bonus points for 20). Energy commitments are verified by a qualified professional, and accessibility against the CSA B651:23 standard. The more you commit, the better your financing.</div></details>
+      <details><summary data-i18n="faq_q5">Is the calculator a quote or an approval?</summary><div class="a" data-i18n="faq_a5">No. It's an <b>estimate for discussion only</b> — not a quote, pre-approval, or commitment to lend. Actual financing depends on a full application, a CMHC-approved lender's underwriting, current rates, and CMHC approval. The insurance fees shown reflect CMHC's rates effective July 14, 2025.</div></details>
+      <details><summary data-i18n="faq_q6">Do you speak Persian / فارسی?</summary><div class="a" data-i18n="faq_a6">Yes. This whole page and calculator are available in Persian — use the <b>فارسی</b> toggle at the top right — and I'm happy to walk through your project in Persian or English. Send your details through the form below and I'll follow up in whichever you prefer.</div></details>
     </div>
   </div>
 </section>
@@ -299,11 +423,11 @@
   <div class="wrap">
     <div class="formwrap">
       <div>
-        <div class="kick">Next step</div>
-        <h2>Get your full, deal-specific analysis</h2>
-        <p>Send me your project details and I'll run a complete CMHC analysis — debt sizing, equity, premium, returns, and a clear recommendation. No cost, no obligation.</p>
+        <div class="kick" data-i18n="lf_kick">Next step</div>
+        <h2 data-i18n="lf_h2">Get your full, deal-specific analysis</h2>
+        <p data-i18n="lf_p">Send me your project details and I'll run a complete CMHC analysis — the loan, the cash you'd need, the insurance fee, your returns, and a clear recommendation. No cost, no obligation.</p>
         <div class="card" style="margin-top:16px">
-          <p style="font-size:13.5px"><b>What you'll get:</b> a sized loan estimate, the cash you'd need to close, your projected returns, the documents required, and an honest view of whether to proceed.</p>
+          <p style="font-size:13.5px" data-i18n="lf_card"><b>What you'll get:</b> a sized loan estimate, the cash you'd need to close, your projected returns, the documents required, and an honest view of whether to proceed.</p>
         </div>
       </div>
       <div>
@@ -314,17 +438,15 @@
           <input type="hidden" name="xmIwtLD"  id="zoho_xmIwtLD"  value="fc7f370331ec16a19a7ec54bccbb030060ef404cae7152804648fe07124804f7aa51f7239c6f3f4e17a1690444a8d253">
           <input type="hidden" name="actionType" value="TGVhZHM=">
           <input type="hidden" name="returnURL" value="https://hamedmortgages-bot.github.io/cmhc-rental/thank-you.html">
-          <!-- Lead Source tags these leads so the Zoho workflow (auto-email + task) fires -->
           <input type="hidden" name="Lead Source" value="Web Download">
-          <!-- anti-spam honeypot (leave empty) -->
           <input type="text" style="display:none" name="aG9uZXlwb3Q" value="" tabindex="-1" autocomplete="off">
-          <input type="text"  name="Last Name"  placeholder="Full name *" required>
-          <input type="email" name="Email"      placeholder="Email *" required>
-          <input type="tel"   name="Phone"      placeholder="Phone">
-          <input type="text"  name="Company"    placeholder="City / project location">
-          <textarea name="Description" id="leadDesc" placeholder="Tell me about your project (units, location, budget)…"></textarea>
-          <button class="btn gold" type="submit" style="width:100%">Send my details</button>
-          <div class="formnote">Your project estimate from the calculator above is attached automatically. By submitting you agree to be contacted about your inquiry.</div>
+          <input type="text"  name="Last Name"  data-i18n-ph="ph_name"  placeholder="Full name *" required>
+          <input type="email" name="Email"      data-i18n-ph="ph_email" placeholder="Email *" required>
+          <input type="tel"   name="Phone"      data-i18n-ph="ph_phone" placeholder="Phone">
+          <input type="text"  name="Company"    data-i18n-ph="ph_city"  placeholder="City / project location">
+          <textarea name="Description" id="leadDesc" data-i18n-ph="ph_desc" placeholder="Tell me about your project (units, location, budget)…"></textarea>
+          <button class="btn gold" type="submit" style="width:100%" data-i18n="lf_btn">Send my details</button>
+          <div class="formnote" data-i18n="lf_note">Your project estimate from the calculator above is attached automatically. By submitting you agree to be contacted about your inquiry.</div>
         </form>
       </div>
     </div>
@@ -334,16 +456,241 @@
 <footer>
   <div class="wrap">
     <div style="font-weight:800;color:#fff;font-size:16px">Hamed Ashouri — Mortgage Advisory</div>
-    <div style="margin-top:4px">Ontario · <a href="mailto:hamedmortgages@gmail.com">hamedmortgages@gmail.com</a></div>
-    <div class="disc"><b>Disclaimer:</b> This page and its calculator are for educational and discussion purposes only and do not constitute a quote, pre-approval, mortgage advice for a specific transaction, or a commitment to lend. CMHC program terms, premiums, and ratios are subject to change and must be confirmed with a CMHC-approved lender and current CMHC guidance. Estimates depend entirely on the assumptions entered. CMHC multi-unit / MLI Select requires a minimum of 5 units; smaller projects are financed conventionally.</div>
-    <div class="src" style="color:#8a93b8">Sources: CMHC MLI Select &amp; Multi-Unit Fees &amp; Premiums (eff. July 14, 2025); CMHC 2025 Rental Market Report; TRREB Q1-2025; Colliers/CBRE 2025 cap-rate reports; Altus 2025 Cost Guide; City of Toronto multiplex bylaws; Elevate Realty Toronto Multiplex Guide 2026.</div>
+    <div style="margin-top:4px"><span data-i18n="ft_loc">Ontario</span> · <a href="mailto:hamedmortgages@gmail.com">hamedmortgages@gmail.com</a></div>
+    <div class="disc" data-i18n="ft_disc"><b>Disclaimer:</b> This page and its calculator are for educational and discussion purposes only and do not constitute a quote, pre-approval, mortgage advice for a specific transaction, or a commitment to lend. CMHC program terms, fees, and ratios are subject to change and must be confirmed with a CMHC-approved lender and current CMHC guidance. Estimates depend entirely on the assumptions entered. CMHC multi-unit / MLI Select requires a minimum of 5 units; smaller projects use a regular mortgage.</div>
+    <div class="src" style="color:#8a93b8" data-i18n="ft_src">Sources: CMHC MLI Select &amp; Multi-Unit Fees &amp; Premiums (eff. July 14, 2025); CMHC 2025 Rental Market Report; TRREB Q1-2025; Colliers/CBRE 2025 cap-rate reports; Altus 2025 Cost Guide; City of Toronto multiplex bylaws; Elevate Realty Toronto Multiplex Guide 2026.</div>
   </div>
 </footer>
 
 <script>
 /* ============================================================
+   i18n LAYER — swaps DISPLAY TEXT only. The calculation engine
+   below is the broker logic; only the strings it prints are
+   routed through tr()/trf(). No math is changed.
+   ============================================================ */
+let LANG='en';
+const STR={
+  nav_sub:{en:"MORTGAGE ADVISORY · ONTARIO",fa:"مشاوره وام مسکن · انتاریو"},
+  nav_how:{en:"How it works",fa:"چطور کار می‌کند"},
+  nav_calc:{en:"Calculator",fa:"ماشین‌حساب"},
+  nav_results:{en:"Results explained",fa:"توضیح نتایج"},
+  nav_faq:{en:"FAQ",fa:"سوالات متداول"},
+  nav_cta:{en:"Get my analysis",fa:"دریافت تحلیل"},
+  hero_badge:{en:"CMHC Rental Financing · MLI Select",fa:"تأمین مالی اجاره‌ای CMHC · برنامه MLI Select"},
+  hero_h1:{en:"Thinking of renting out a property? See if the numbers work — before you commit.",fa:"به فکر خرید یا ساخت ملک اجاره‌ای هستید؟ پیش از هر تصمیمی ببینید آیا عددها جور درمی‌آید."},
+  hero_p:{en:"CMHC's rental programs can mean a smaller down payment, a longer payback, and better terms than a regular bank mortgage. This page explains it in plain language and lets you estimate your own project in a couple of minutes — in English or Persian.",fa:"برنامه‌های اجاره‌ای CMHC می‌تواند یعنی پیش‌پرداخت کمتر، مدت بازپرداخت طولانی‌تر و شرایط بهتر نسبت به وام معمولی بانک. این صفحه همه‌چیز را به زبان ساده توضیح می‌دهد و در چند دقیقه به شما اجازه می‌دهد پروژه‌ی خودتان را برآورد کنید — به انگلیسی یا فارسی."},
+  hero_btn1:{en:"Try the calculator",fa:"شروع ماشین‌حساب"},
+  hero_btn2:{en:"📞 Book a free call",fa:"📞 رزرو تماس رایگان"},
+  hero_btn3:{en:"How it works",fa:"چطور کار می‌کند"},
+  how_kick:{en:"Start here",fa:"از اینجا شروع کنید"},
+  how_h2:{en:"How this calculator works",fa:"این ماشین‌حساب چطور کار می‌کند"},
+  how_lead:{en:"You don't need to be a finance person. Answer a few simple questions about the property, and the tool shows you — in everyday words — how big a mortgage it could support, how much of your own cash you'd need, and whether the project looks worth pursuing.",fa:"لازم نیست متخصص مالی باشید. چند سؤال ساده درباره‌ی ملک پاسخ دهید تا این ابزار به زبان روزمره به شما نشان دهد چه مقدار وام می‌توانید بگیرید، چه مقدار پول نقد خودتان لازم است، و آیا این پروژه ارزش دنبال‌کردن دارد یا نه."},
+  how_s1_h:{en:"Tell us about the property",fa:"درباره‌ی ملک بگویید"},
+  how_s1_p:{en:"How many rental units, what it costs to buy or build, and roughly what the rent would be. Each box has a plain-language hint and an example.",fa:"چند واحد اجاره‌ای، هزینه‌ی خرید یا ساخت، و اجاره‌ی تقریبی. هر کادر یک راهنمای ساده و یک مثال دارد."},
+  how_s2_h:{en:"We estimate what a lender sees",fa:"آنچه وام‌دهنده می‌بیند را برآورد می‌کنیم"},
+  how_s2_p:{en:"The tool runs the same checks a lender does — the income after costs, whether it covers the loan, and how much they'd lend — using current CMHC rules.",fa:"این ابزار همان بررسی‌های وام‌دهنده را انجام می‌دهد — درآمد پس از هزینه‌ها، اینکه آیا قسط وام را پوشش می‌دهد، و چه مقدار وام می‌دهند — بر اساس قوانین فعلی CMHC."},
+  how_s3_h:{en:"You get a clear read",fa:"یک نتیجه‌ی روشن می‌گیرید"},
+  how_s3_p:{en:"A simple verdict — looks promising, marginal, or needs work — plus the loan, the cash to get in, and the yearly cash flow. Every result is explained below.",fa:"یک ارزیابی ساده — امیدوارکننده، مرزی، یا نیازمند بازنگری — به‌علاوه‌ی مبلغ وام، پول نقد لازم، و جریان نقدی سالانه. هر نتیجه در پایین توضیح داده شده است."},
+  how_note:{en:"This is an estimate to help you think it through — not a quote, an approval, or a promise to lend. Your real numbers are confirmed by a CMHC-approved lender.",fa:"این فقط یک برآورد برای کمک به تصمیم‌گیری است — نه پیشنهاد قیمت، نه تأیید، و نه تعهد وام. عددهای واقعی شما توسط یک وام‌دهنده‌ی مورد تأیید CMHC تأیید می‌شود."},
+  learn_kick:{en:"The basics",fa:"مبانی"},
+  learn_h2:{en:"What is CMHC rental financing?",fa:"تأمین مالی اجاره‌ای CMHC چیست؟"},
+  learn_lead:{en:"CMHC is Canada's housing agency. It insures mortgages on rental buildings of 5 or more units, which lets a lender offer you terms you can't get on a regular mortgage. Its main program — <b>MLI Select</b> — gives even better terms when your building is more affordable, more energy-efficient, or more accessible.",fa:"CMHC نهاد مسکن کانادا است. این نهاد وام ساختمان‌های اجاره‌ای با ۵ واحد یا بیشتر را بیمه می‌کند، که به وام‌دهنده اجازه می‌دهد شرایطی به شما بدهد که در وام معمولی ممکن نیست. برنامه‌ی اصلی آن — <b>MLI Select</b> — وقتی ساختمان شما مقرون‌به‌صرفه‌تر، کم‌مصرف‌تر یا دسترس‌پذیرتر باشد، شرایط حتی بهتری می‌دهد."},
+  learn_c1_h:{en:"Smaller down payment",fa:"پیش‌پرداخت کمتر"},
+  learn_c1_p:{en:"Qualifying projects can be financed up to 95% of the cost — so you put in far less of your own cash than with a regular mortgage.",fa:"پروژه‌های واجد شرایط می‌توانند تا ۹۵٪ هزینه تأمین مالی شوند — یعنی پول نقد بسیار کمتری نسبت به وام معمولی می‌گذارید."},
+  learn_c2_h:{en:"Longer to pay it back",fa:"مدت بازپرداخت بلندتر"},
+  learn_c2_p:{en:"Up to 50 years to repay, which lowers the monthly payment and lets the property support a bigger loan.",fa:"تا ۵۰ سال برای بازپرداخت، که قسط ماهانه را کم می‌کند و اجازه می‌دهد ملک وام بزرگ‌تری را تحمل کند."},
+  learn_c3_h:{en:"Better rates & terms",fa:"نرخ و شرایط بهتر"},
+  learn_c3_p:{en:"Because the loan is insured, pricing is better — plus discounts on the insurance fee, and reduced personal liability at the top tier.",fa:"چون وام بیمه شده، نرخ بهتر است — به‌علاوه‌ی تخفیف در حق بیمه و کاهش مسئولیت شخصی در بالاترین سطح."},
+  lend_kick:{en:"Behind the scenes",fa:"پشت صحنه"},
+  lend_h2:{en:"What a lender is really checking",fa:"وام‌دهنده واقعاً چه چیزی را بررسی می‌کند"},
+  lend_lead:{en:"When you apply, a lender quietly asks four questions. This calculator answers the same four, so nothing in your meeting is a surprise. The plain-language idea comes first; the official term is in the small print, in case you want it.",fa:"وقتی درخواست می‌دهید، وام‌دهنده در ذهنش چهار سؤال می‌پرسد. این ماشین‌حساب به همان چهار سؤال پاسخ می‌دهد تا در جلسه چیزی غافلگیرتان نکند. ابتدا توضیح ساده آمده؛ اصطلاح رسمی هم در پایین، اگر بخواهید."},
+  lend_1_h:{en:"① What's left after the bills?",fa:"① بعد از کسر هزینه‌ها چه می‌ماند؟"},
+  lend_1_p:{en:"They add up a year of rent, then subtract empty units and running costs (taxes, insurance, repairs, management). What's left is the property's real yearly income.",fa:"یک سال اجاره را جمع می‌زنند، سپس واحدهای خالی و هزینه‌های جاری (مالیات، بیمه، تعمیرات، مدیریت) را کم می‌کنند. آنچه می‌ماند درآمد واقعی سالانه‌ی ملک است."},
+  lend_1_t:{en:"Technical term: <b>Net Operating Income (NOI)</b> — rent minus vacancy minus operating expenses.",fa:"اصطلاح فنی: <b>درآمد عملیاتی خالص (NOI)</b> — اجاره منهای خالی‌ماندن منهای هزینه‌های عملیاتی."},
+  lend_2_h:{en:"② Does that income cover the loan?",fa:"② آیا این درآمد قسط وام را پوشش می‌دهد؟"},
+  lend_2_p:{en:"They check that the yearly income comfortably exceeds the yearly mortgage payment — with a cushion, not just barely. This usually decides how much you can borrow.",fa:"بررسی می‌کنند که درآمد سالانه با خیال راحت از قسط سالانه‌ی وام بیشتر باشد — با حاشیه‌ی امن، نه به‌سختی. معمولاً همین تعیین می‌کند چقدر می‌توانید وام بگیرید."},
+  lend_2_t:{en:"Technical term: <b>Debt Coverage Ratio (DCR/DSCR)</b> — income ÷ loan payment. CMHC rental usually wants at least 1.10×.",fa:"اصطلاح فنی: <b>نسبت پوشش بدهی (DCR/DSCR)</b> — درآمد ÷ قسط وام. اجاره‌ای CMHC معمولاً حداقل ۱٫۱۰ برابر می‌خواهد."},
+  lend_3_h:{en:"③ How much will they lend?",fa:"③ چه مقدار وام می‌دهند؟"},
+  lend_3_p:{en:"There's a ceiling based on the property's value or cost — for qualifying CMHC projects, up to 95%. The smaller of \"what the income covers\" and \"this ceiling\" wins.",fa:"یک سقف بر اساس ارزش یا هزینه‌ی ملک وجود دارد — برای پروژه‌های واجد شرایط CMHC تا ۹۵٪. کوچک‌ترِ «آنچه درآمد پوشش می‌دهد» و «این سقف» ملاک است."},
+  lend_3_t:{en:"Technical terms: <b>Loan-to-Value (LTV)</b> and <b>Loan-to-Cost (LTC)</b> — the loan as a share of value or cost.",fa:"اصطلاحات فنی: <b>وام به ارزش (LTV)</b> و <b>وام به هزینه (LTC)</b> — وام به‌عنوان سهمی از ارزش یا هزینه."},
+  lend_4_h:{en:"④ What do you bring, and what's the fee?",fa:"④ شما چه می‌آورید و حق بیمه چقدر است؟"},
+  lend_4_p:{en:"Whatever the loan doesn't cover, you bring as cash. CMHC also charges a one-time insurance fee, which is reduced for higher-scoring projects.",fa:"هرچه وام پوشش ندهد، شما به‌صورت نقد می‌آورید. CMHC یک حق بیمه‌ی یک‌باره هم می‌گیرد که برای پروژه‌های با امتیاز بالاتر کمتر می‌شود."},
+  lend_4_t:{en:"Technical terms: <b>Equity / cash-to-close</b> and the <b>CMHC premium</b> (the insurance fee, eff. July 14, 2025).",fa:"اصطلاحات فنی: <b>سرمایه / نقد لازم برای بستن معامله</b> و <b>حق بیمه‌ی CMHC</b> (حق بیمه، مؤثر از ۱۴ ژوئیه ۲۰۲۵)."},
+  mli_kick:{en:"MLI Select",fa:"برنامه MLI Select"},
+  mli_h2:{en:"Score points → unlock better terms",fa:"امتیاز بگیرید ← شرایط بهتر باز کنید"},
+  mli_lead:{en:"You earn points by committing to affordability, energy efficiency, and/or accessibility. Your total lands you in one of three tiers — and the higher the tier, the better the financing (minimum 5 units required).",fa:"با تعهد به مقرون‌به‌صرفه‌بودن، بهره‌وری انرژی و/یا دسترس‌پذیری امتیاز می‌گیرید. مجموع امتیاز شما را در یکی از سه سطح قرار می‌دهد — هرچه سطح بالاتر، تأمین مالی بهتر (حداقل ۵ واحد لازم است)."},
+  mli_pts:{en:"pts",fa:"امتیاز"},
+  mli_t1_l:{en:"Entry level",fa:"سطح پایه"},
+  mli_t1_a:{en:"Up to 85% of value / 95% of cost",fa:"تا ۸۵٪ ارزش / ۹۵٪ هزینه"},
+  mli_t1_b:{en:"Up to 40 years to repay",fa:"تا ۴۰ سال بازپرداخت"},
+  mli_t1_c:{en:"10% off the insurance fee",fa:"۱۰٪ تخفیف حق بیمه"},
+  mli_t2_l:{en:"Strong",fa:"قوی"},
+  mli_t2_a:{en:"Up to 95% financing",fa:"تا ۹۵٪ تأمین مالی"},
+  mli_t2_b:{en:"Up to 45 years to repay",fa:"تا ۴۵ سال بازپرداخت"},
+  mli_t2_c:{en:"20% off the insurance fee",fa:"۲۰٪ تخفیف حق بیمه"},
+  mli_t3_l:{en:"Best terms",fa:"بهترین شرایط"},
+  mli_t3_a:{en:"Up to 95% financing",fa:"تا ۹۵٪ تأمین مالی"},
+  mli_t3_b:{en:"Up to 50 years to repay",fa:"تا ۵۰ سال بازپرداخت"},
+  mli_t3_c:{en:"30% off the fee + reduced personal liability",fa:"۳۰٪ تخفیف حق بیمه + کاهش مسئولیت شخصی"},
+  calc_kick:{en:"Estimate your project",fa:"پروژه‌تان را برآورد کنید"},
+  calc_h2:{en:"Rental project calculator",fa:"ماشین‌حساب پروژه‌ی اجاره‌ای"},
+  calc_lead:{en:"Fill in what you know — every box has a hint and an example. As you type, the results update instantly. Don't worry about getting everything perfect; you can refine it with me later.",fa:"آنچه می‌دانید را وارد کنید — هر کادر یک راهنما و یک مثال دارد. همزمان با تایپ، نتایج فوراً به‌روز می‌شود. نگران کامل‌بودن نباشید؛ بعداً با هم دقیق‌ترش می‌کنیم."},
+  f_scenario:{en:"What are you planning to do?",fa:"چه برنامه‌ای دارید؟"},
+  f_scenario_h:{en:"Pick the closest option. <b>Example:</b> buying a building that already has tenants → \"Buy existing\".",fa:"نزدیک‌ترین گزینه را انتخاب کنید. <b>مثال:</b> خرید ساختمانی که از قبل مستأجر دارد ← «خرید موجود»."},
+  f_scn_buy:{en:"Buy existing",fa:"خرید موجود"},
+  f_scn_build:{en:"Build new",fa:"ساخت جدید"},
+  f_scn_conv:{en:"Buy + convert",fa:"خرید + تبدیل"},
+  f_units:{en:"How many rental units?",fa:"چند واحد اجاره‌ای؟"},
+  f_units_h:{en:"Separate homes in the building. <b>Example:</b> a triplex = 3. CMHC's program needs 5+.",fa:"خانه‌های مجزا در ساختمان. <b>مثال:</b> یک سه‌واحدی = ۳. برنامه‌ی CMHC به ۵ واحد یا بیشتر نیاز دارد."},
+  f_cash:{en:"Cash you can put in",fa:"پول نقدی که می‌توانید بگذارید"},
+  f_cash_h:{en:"Your own money for the down payment + closing. <b>Example:</b> $900,000.",fa:"پول خودتان برای پیش‌پرداخت + هزینه‌های بستن معامله. <b>مثال:</b> ۹۰۰٬۰۰۰ دلار."},
+  f_pp:{en:"Price to buy it",fa:"قیمت خرید"},
+  f_pp_s:{en:"(+ renovation if converting)",fa:"(+ هزینه‌ی بازسازی اگر تبدیل می‌کنید)"},
+  f_pp_h:{en:"What you'd pay for the property; add renovation cost if converting. <b>Example:</b> $2,100,000.",fa:"مبلغی که برای ملک می‌پردازید؛ اگر تبدیل می‌کنید هزینه‌ی بازسازی را اضافه کنید. <b>مثال:</b> ۲٬۱۰۰٬۰۰۰ دلار."},
+  f_land:{en:"Cost of the land",fa:"هزینه‌ی زمین"},
+  f_land_h:{en:"The lot or teardown price. <b>Example:</b> $1,100,000.",fa:"قیمت زمین یا ملک تخریبی. <b>مثال:</b> ۱٬۱۰۰٬۰۰۰ دلار."},
+  f_psf:{en:"Build cost",fa:"هزینه‌ی ساخت"},
+  f_psf_h:{en:"Rough cost to build, per square foot. <b>Example:</b> $300.",fa:"هزینه‌ی تقریبی ساخت، به ازای هر فوت مربع. <b>مثال:</b> ۳۰۰ دلار."},
+  f_usf:{en:"Average unit size",fa:"متوسط مساحت واحد"},
+  f_usf_h:{en:"Typical apartment size. <b>Example:</b> 850 sq ft.",fa:"اندازه‌ی معمول آپارتمان. <b>مثال:</b> ۸۵۰ فوت مربع."},
+  f_rent:{en:"Monthly rent per unit",fa:"اجاره‌ی ماهانه‌ی هر واحد"},
+  f_rent_h:{en:"What one unit rents for each month. <b>Example:</b> $2,300.",fa:"اجاره‌ی ماهانه‌ی یک واحد. <b>مثال:</b> ۲٬۳۰۰ دلار."},
+  f_rate:{en:"Interest rate",fa:"نرخ بهره"},
+  f_rate_h:{en:"Yearly interest on the loan. <b>Example:</b> 4.75%.",fa:"بهره‌ی سالانه‌ی وام. <b>مثال:</b> ۴٫۷۵٪."},
+  f_path:{en:"How do you want to finance it?",fa:"چطور می‌خواهید تأمین مالی کنید؟"},
+  f_path_h:{en:"CMHC's insured program gives better terms but needs 5+ units. Fewer units → regular mortgage.",fa:"برنامه‌ی بیمه‌شده‌ی CMHC شرایط بهتری می‌دهد ولی به ۵ واحد یا بیشتر نیاز دارد. واحد کمتر ← وام معمولی."},
+  f_path_cmhc:{en:"CMHC MLI Select",fa:"CMHC — MLI Select"},
+  f_path_conv:{en:"Regular mortgage",fa:"وام معمولی"},
+  f_points:{en:"How much will you commit? (CMHC points)",fa:"چقدر تعهد می‌دهید؟ (امتیاز CMHC)"},
+  f_points_h:{en:"More affordable / green / accessible commitments = more points = better terms. Most aim for 100.",fa:"تعهدهای بیشتر به ارزانی / سبز / دسترس‌پذیر = امتیاز بیشتر = شرایط بهتر. بیشتر افراد ۱۰۰ را هدف می‌گیرند."},
+  adv_sum:{en:"Fine-tuning (optional — sensible defaults are filled in)",fa:"تنظیم دقیق (اختیاری — مقادیر منطقی از قبل پر شده‌اند)"},
+  adv_h:{en:"Only change these if you have better numbers. They're the small assumptions behind the estimate.",fa:"فقط اگر عددهای دقیق‌تری دارید این‌ها را تغییر دهید. این‌ها فرض‌های کوچک پشت برآورد هستند."},
+  f_vac:{en:"Empty-unit allowance",fa:"حاشیه‌ی واحد خالی"},
+  f_vac_h:{en:"Share of the year units sit empty. <b>Example:</b> 3%.",fa:"بخشی از سال که واحدها خالی می‌مانند. <b>مثال:</b> ۳٪."},
+  f_exp:{en:"Running costs",fa:"هزینه‌های جاری"},
+  f_exp_h:{en:"Taxes, insurance, repairs, management as a share of rent. <b>Example:</b> 32%.",fa:"مالیات، بیمه، تعمیرات، مدیریت به‌عنوان سهمی از اجاره. <b>مثال:</b> ۳۲٪."},
+  f_cap:{en:"Valuation rate",fa:"نرخ ارزش‌گذاری"},
+  f_cap_h:{en:"Used to estimate the building's value from its income. <b>Example:</b> 5%.",fa:"برای برآورد ارزش ساختمان از روی درآمدش استفاده می‌شود. <b>مثال:</b> ۵٪."},
+  f_down:{en:"Down payment",fa:"پیش‌پرداخت"},
+  f_down_h:{en:"Only used for a regular mortgage. <b>Example:</b> 25%.",fa:"فقط برای وام معمولی استفاده می‌شود. <b>مثال:</b> ۲۵٪."},
+  res_h:{en:"Your estimate",fa:"برآورد شما"},
+  res_cta:{en:"Get my full, deal-specific analysis →",fa:"دریافت تحلیل کامل و اختصاصی ←"},
+  calc_foot:{en:"Estimate only. Figures depend on your inputs and current CMHC rules; confirm with a CMHC-approved lender. Projects under 5 units are financed with a regular mortgage, not under CMHC multi-unit.",fa:"فقط برآورد. ارقام به ورودی‌های شما و قوانین فعلی CMHC بستگی دارد؛ با یک وام‌دهنده‌ی مورد تأیید CMHC تأیید کنید. پروژه‌های زیر ۵ واحد با وام معمولی تأمین می‌شوند، نه برنامه‌ی چندواحدی CMHC."},
+  rx_kick:{en:"Make sense of it",fa:"درکش کنید"},
+  rx_h2:{en:"Your results, explained",fa:"نتایج شما، توضیح داده‌شده"},
+  rx_lead:{en:"Here's what each number actually means — why it matters to you, and how a lender uses it. No jargon required.",fa:"این‌جا توضیح می‌دهیم هر عددی واقعاً چه معنایی دارد — چرا برای شما مهم است و وام‌دهنده چطور از آن استفاده می‌کند. بدون اصطلاح پیچیده."},
+  rx_w:{en:"What it means",fa:"یعنی چه"},
+  rx_y:{en:"Why it matters",fa:"چرا مهم است"},
+  rx_l:{en:"How a lender uses it",fa:"وام‌دهنده چطور استفاده می‌کند"},
+  rx_1_h:{en:"💰 \"You could finance\"",fa:"💰 «وامی که می‌توانید بگیرید»"},
+  rx_1_w:{en:"The size of mortgage this property can realistically support.",fa:"اندازه‌ی وامی که این ملک واقع‌بینانه می‌تواند تحمل کند."},
+  rx_1_y:{en:"The bigger this is, the less of your own cash you need to bring.",fa:"هرچه بزرگ‌تر باشد، پول نقد کمتری از خودتان لازم است."},
+  rx_1_l:{en:"They lend the smaller of what the income covers and what the rules allow.",fa:"کوچک‌ترِ آنچه درآمد پوشش می‌دهد و آنچه قوانین اجازه می‌دهند را وام می‌دهند."},
+  rx_2_h:{en:"🔑 \"Cash to get in\"",fa:"🔑 «نقد لازم برای ورود»"},
+  rx_2_w:{en:"The total cash you need at closing: your down payment, the insurance fee, and closing costs.",fa:"کل پول نقد لازم هنگام بستن معامله: پیش‌پرداخت، حق بیمه، و هزینه‌های بستن."},
+  rx_2_y:{en:"This is the real money you need on hand. The tool flags if your cash falls short.",fa:"این پول واقعی‌ای است که باید آماده داشته باشید. ابزار اگر پول‌تان کم بیاید هشدار می‌دهد."},
+  rx_2_l:{en:"They confirm you can fund the gap between the loan and the total cost.",fa:"تأیید می‌کنند که می‌توانید فاصله‌ی بین وام و کل هزینه را تأمین کنید."},
+  rx_3_h:{en:"📈 \"Yearly cash flow\"",fa:"📈 «جریان نقدی سالانه»"},
+  rx_3_w:{en:"The rent left over after running costs and the mortgage payment, each year.",fa:"اجاره‌ی باقی‌مانده پس از هزینه‌های جاری و قسط وام، در هر سال."},
+  rx_3_y:{en:"Positive means the property pays for itself; \"cash-on-cash\" is the return on your cash.",fa:"مثبت یعنی ملک خرج خودش را درمی‌آورد؛ «بازده نقدی» سود روی پول نقد شماست."},
+  rx_3_l:{en:"They want the income safely above the payment — that cushion is the debt-coverage check.",fa:"می‌خواهند درآمد با خیال راحت بالاتر از قسط باشد — همان حاشیه، بررسی پوشش بدهی است."},
+  rx_4_h:{en:"🏢 \"Value when stabilized\"",fa:"🏢 «ارزش پس از تثبیت»"},
+  rx_4_w:{en:"The estimated value of the building once it's fully rented and running.",fa:"ارزش برآوردی ساختمان وقتی کاملاً اجاره داده شده و فعال است."},
+  rx_4_y:{en:"Compared to your cost, it shows the equity (profit margin) you'd create.",fa:"در مقایسه با هزینه‌تان، سرمایه (حاشیه‌ی سود) ایجادشده را نشان می‌دهد."},
+  rx_4_l:{en:"It can support the loan and a future refinance to pull cash back out.",fa:"می‌تواند وام و بازتأمین مالی آینده برای بیرون‌کشیدن پول را پشتیبانی کند."},
+  mk_kick:{en:"Toronto · 2025–2026",fa:"تورنتو · ۲۰۲۵–۲۰۲۶"},
+  mk_h2:{en:"What the market looks like",fa:"بازار چه شکلی است"},
+  mk_lead:{en:"Rough benchmarks to sanity-check your inputs. Your own property may differ — these are for orientation.",fa:"معیارهای تقریبی برای محک‌زدن ورودی‌هایتان. ملک شما ممکن است فرق کند — این‌ها برای جهت‌دهی است."},
+  mk_b1_l:{en:"Avg rent (new rental)",fa:"متوسط اجاره (اجاره‌ای نوساز)"},
+  mk_b1_s:{en:"1-bed to 2-bed",fa:"یک‌خوابه تا دوخوابه"},
+  mk_b2_l:{en:"GTA vacancy",fa:"نرخ خالی‌بودن GTA"},
+  mk_b2_s:{en:"New builds ~7% at lease-up",fa:"نوسازها ~۷٪ در زمان اجاره‌دهی اولیه"},
+  mk_b3_l:{en:"Cap rate",fa:"نرخ سرمایه"},
+  mk_b3_s:{en:"By type & size",fa:"بر اساس نوع و اندازه"},
+  mk_b4_l:{en:"Build cost",fa:"هزینه‌ی ساخت"},
+  mk_b4_s:{en:"Conversions $40k+/unit",fa:"تبدیل‌ها ۴۰هزار دلار+ به ازای واحد"},
+  mk_comp:{en:"<b>A real Toronto example.</b> A house on a main road bought for ~<b>$800K</b>, plus ~<b>$150K</b> to legally convert to a triplex (~$340K all-in), produced <b>3 units and $6,000+/month</b> rent with <b>$2,000+/month</b> cash flow. After renovation it appraised around <b>$1.1M</b> — an ~$150K instant equity lift; a refinance pulled out ~$240K, leaving ~$100K in the deal.",fa:"<b>یک مثال واقعی از تورنتو.</b> خانه‌ای در یک خیابان اصلی با حدود <b>۸۰۰هزار دلار</b> خریده شد، به‌علاوه‌ی حدود <b>۱۵۰هزار دلار</b> برای تبدیل قانونی به سه‌واحدی (~۳۴۰هزار دلار نقد)، که <b>۳ واحد و بیش از ۶٬۰۰۰ دلار اجاره‌ی ماهانه</b> با <b>بیش از ۲٬۰۰۰ دلار</b> جریان نقدی ماهانه ایجاد کرد. پس از بازسازی حدود <b>۱٫۱ میلیون دلار</b> ارزش‌گذاری شد — حدود ۱۵۰هزار دلار افزایش سرمایه‌ی فوری؛ یک بازتأمین مالی حدود ۲۴۰هزار دلار بیرون کشید و حدود ۱۰۰هزار دلار در معامله باقی ماند."},
+  mk_src:{en:"Source: Elevate Realty, Toronto Multiplex Guide 2026 — illustration; results vary by deal.",fa:"منبع: Elevate Realty، راهنمای چندواحدی تورنتو ۲۰۲۶ — نمونه‌ی توضیحی؛ نتایج بسته به معامله فرق می‌کند."},
+  faq_kick:{en:"Common questions",fa:"سوالات متداول"},
+  faq_h2:{en:"CMHC rental financing FAQ",fa:"سوالات متداول تأمین مالی اجاره‌ای CMHC"},
+  faq_lead:{en:"Straight answers on how CMHC and MLI Select work for rental property in Ontario.",fa:"پاسخ‌های صریح درباره‌ی نحوه‌ی کار CMHC و MLI Select برای ملک اجاره‌ای در انتاریو."},
+  faq_q1:{en:"How many units do I need to qualify for CMHC?",fa:"برای واجد شرایط شدن CMHC به چند واحد نیاز دارم؟"},
+  faq_a1:{en:"CMHC's multi-unit insurance and the MLI Select program need a <b>minimum of 5 units</b> (50 units/beds for retirement homes). Smaller projects — a duplex to a fourplex — use a regular mortgage instead. The calculator flags this for you automatically.",fa:"بیمه‌ی چندواحدی CMHC و برنامه‌ی MLI Select به <b>حداقل ۵ واحد</b> نیاز دارند (۵۰ واحد/تخت برای خانه‌های سالمندان). پروژه‌های کوچک‌تر — دوواحدی تا چهارواحدی — از وام معمولی استفاده می‌کنند. ماشین‌حساب این را خودکار به شما هشدار می‌دهد."},
+  faq_q2:{en:"What is MLI Select, and why does it matter?",fa:"MLI Select چیست و چرا مهم است؟"},
+  faq_a2:{en:"MLI Select is CMHC's flagship rental program. You earn points by committing to <b>affordability, energy efficiency, and/or accessibility</b>, and your total (50 / 70 / 100) unlocks better terms: up to 95% financing, up to 50 years to repay, discounts on the insurance fee, and reduced personal liability at the top tier.",fa:"MLI Select برنامه‌ی پرچم‌دار اجاره‌ای CMHC است. با تعهد به <b>مقرون‌به‌صرفه‌بودن، بهره‌وری انرژی و/یا دسترس‌پذیری</b> امتیاز می‌گیرید، و مجموع (۵۰ / ۷۰ / ۱۰۰) شرایط بهتری باز می‌کند: تا ۹۵٪ تأمین مالی، تا ۵۰ سال بازپرداخت، تخفیف حق بیمه، و کاهش مسئولیت شخصی در بالاترین سطح."},
+  faq_q3:{en:"How little can I put down?",fa:"کمترین پیش‌پرداخت چقدر است؟"},
+  faq_a3:{en:"Qualifying MLI Select projects can be financed up to <b>95% of cost or value</b> — far less cash than a regular mortgage. In practice the loan is usually capped by debt coverage (whether the income covers the payment), not the 95% ceiling, so your real cash-in depends on the property's income. The calculator shows both.",fa:"پروژه‌های واجد شرایط MLI Select می‌توانند تا <b>۹۵٪ هزینه یا ارزش</b> تأمین مالی شوند — بسیار کمتر از وام معمولی. در عمل وام معمولاً با پوشش بدهی (اینکه آیا درآمد قسط را پوشش می‌دهد) محدود می‌شود، نه سقف ۹۵٪، پس نقد واقعی شما به درآمد ملک بستگی دارد. ماشین‌حساب هر دو را نشان می‌دهد."},
+  faq_q4:{en:"What do I have to commit to in exchange?",fa:"در ازایش به چه چیزی باید تعهد بدهم؟"},
+  faq_a4:{en:"Measurable outcomes. For example, affordability commitments run a <b>minimum of 10 years</b> (with bonus points for 20). Energy commitments are verified by a qualified professional, and accessibility against the CSA B651:23 standard. The more you commit, the better your financing.",fa:"نتایج قابل‌اندازه‌گیری. مثلاً تعهدهای مقرون‌به‌صرفه‌بودن <b>حداقل ۱۰ سال</b> طول می‌کشند (با امتیاز اضافی برای ۲۰ سال). تعهدهای انرژی توسط یک متخصص واجد شرایط تأیید می‌شوند و دسترس‌پذیری بر اساس استاندارد CSA B651:23. هرچه بیشتر تعهد دهید، تأمین مالی بهتری دارید."},
+  faq_q5:{en:"Is the calculator a quote or an approval?",fa:"آیا این ماشین‌حساب پیشنهاد قیمت یا تأیید است؟"},
+  faq_a5:{en:"No. It's an <b>estimate for discussion only</b> — not a quote, pre-approval, or commitment to lend. Actual financing depends on a full application, a CMHC-approved lender's underwriting, current rates, and CMHC approval. The insurance fees shown reflect CMHC's rates effective July 14, 2025.",fa:"خیر. این فقط یک <b>برآورد برای گفت‌وگو</b> است — نه پیشنهاد قیمت، نه پیش‌تأیید، و نه تعهد وام. تأمین مالی واقعی به درخواست کامل، ارزیابی وام‌دهنده‌ی مورد تأیید CMHC، نرخ‌های روز و تأیید CMHC بستگی دارد. حق بیمه‌های نشان‌داده‌شده نرخ‌های CMHC مؤثر از ۱۴ ژوئیه ۲۰۲۵ را منعکس می‌کنند."},
+  faq_q6:{en:"Do you speak Persian / فارسی?",fa:"آیا فارسی صحبت می‌کنید؟"},
+  faq_a6:{en:"Yes. This whole page and calculator are available in Persian — use the <b>فارسی</b> toggle at the top right — and I'm happy to walk through your project in Persian or English. Send your details through the form below and I'll follow up in whichever you prefer.",fa:"بله. تمام این صفحه و ماشین‌حساب به فارسی در دسترس است — از دکمه‌ی <b>فارسی</b> در بالا استفاده کنید — و با کمال میل پروژه‌تان را به فارسی یا انگلیسی بررسی می‌کنم. جزئیات‌تان را از فرم پایین بفرستید تا به زبان دلخواه شما پیگیری کنم."},
+  lf_kick:{en:"Next step",fa:"قدم بعدی"},
+  lf_h2:{en:"Get your full, deal-specific analysis",fa:"تحلیل کامل و اختصاصی معامله‌تان را بگیرید"},
+  lf_p:{en:"Send me your project details and I'll run a complete CMHC analysis — the loan, the cash you'd need, the insurance fee, your returns, and a clear recommendation. No cost, no obligation.",fa:"جزئیات پروژه‌تان را بفرستید تا یک تحلیل کامل CMHC انجام دهم — مبلغ وام، پول نقد لازم، حق بیمه، بازده شما و یک توصیه‌ی روشن. بدون هزینه، بدون تعهد."},
+  lf_card:{en:"<b>What you'll get:</b> a sized loan estimate, the cash you'd need to close, your projected returns, the documents required, and an honest view of whether to proceed.",fa:"<b>چه چیزی می‌گیرید:</b> برآورد مبلغ وام، پول نقد لازم برای بستن، بازده پیش‌بینی‌شده، مدارک لازم، و یک نظر صادقانه درباره‌ی ادامه‌دادن یا نه."},
+  ph_name:{en:"Full name *",fa:"نام کامل *"},
+  ph_email:{en:"Email *",fa:"ایمیل *"},
+  ph_phone:{en:"Phone",fa:"تلفن"},
+  ph_city:{en:"City / project location",fa:"شهر / محل پروژه"},
+  ph_desc:{en:"Tell me about your project (units, location, budget)…",fa:"درباره‌ی پروژه‌تان بگویید (تعداد واحد، محل، بودجه)…"},
+  lf_btn:{en:"Send my details",fa:"ارسال اطلاعات من"},
+  lf_note:{en:"Your project estimate from the calculator above is attached automatically. By submitting you agree to be contacted about your inquiry.",fa:"برآورد پروژه‌ی شما از ماشین‌حساب بالا به‌طور خودکار ضمیمه می‌شود. با ارسال، موافقت می‌کنید درباره‌ی درخواست‌تان با شما تماس گرفته شود."},
+  ft_loc:{en:"Ontario",fa:"انتاریو"},
+  ft_disc:{en:"<b>Disclaimer:</b> This page and its calculator are for educational and discussion purposes only and do not constitute a quote, pre-approval, mortgage advice for a specific transaction, or a commitment to lend. CMHC program terms, fees, and ratios are subject to change and must be confirmed with a CMHC-approved lender and current CMHC guidance. Estimates depend entirely on the assumptions entered. CMHC multi-unit / MLI Select requires a minimum of 5 units; smaller projects use a regular mortgage.",fa:"<b>سلب مسئولیت:</b> این صفحه و ماشین‌حساب آن صرفاً برای اهداف آموزشی و گفت‌وگو هستند و پیشنهاد قیمت، پیش‌تأیید، مشاوره‌ی وام برای یک معامله‌ی خاص یا تعهد وام محسوب نمی‌شوند. شرایط برنامه، حق بیمه و نسبت‌های CMHC قابل تغییرند و باید با یک وام‌دهنده‌ی مورد تأیید CMHC و راهنمای روز CMHC تأیید شوند. برآوردها کاملاً به فرض‌های واردشده بستگی دارند. برنامه‌ی چندواحدی / MLI Select حداقل ۵ واحد لازم دارد؛ پروژه‌های کوچک‌تر از وام معمولی استفاده می‌کنند."},
+  ft_src:{en:"Sources: CMHC MLI Select & Multi-Unit Fees & Premiums (eff. July 14, 2025); CMHC 2025 Rental Market Report; TRREB Q1-2025; Colliers/CBRE 2025 cap-rate reports; Altus 2025 Cost Guide; City of Toronto multiplex bylaws; Elevate Realty Toronto Multiplex Guide 2026.",fa:"منابع: حق بیمه و کارمزدهای MLI Select و چندواحدی CMHC (مؤثر از ۱۴ ژوئیه ۲۰۲۵)؛ گزارش بازار اجاره‌ی CMHC ۲۰۲۵؛ TRREB سه‌ماهه‌ی اول ۲۰۲۵؛ گزارش‌های نرخ سرمایه‌ی Colliers/CBRE ۲۰۲۵؛ راهنمای هزینه‌ی Altus ۲۰۲۵؛ مقررات چندواحدی شهر تورنتو؛ راهنمای چندواحدی Elevate Realty ۲۰۲۶."},
+  elig_yes:{en:"units — eligible for CMHC's MLI Select program.",fa:"واحد — واجد شرایط برنامه‌ی MLI Select است."},
+  elig_no:{en:"Under 5 units — not eligible for CMHC multi-unit; using a regular mortgage.",fa:"زیر ۵ واحد — واجد شرایط برنامه‌ی چندواحدی CMHC نیست؛ از وام معمولی استفاده می‌شود."},
+  costLabel_build:{en:"Total project cost",fa:"کل هزینه‌ی پروژه"},
+  costLabel_buy:{en:"All-in cost",fa:"هزینه‌ی نهایی"},
+  lbl_pts:{en:"pts",fa:" امتیاز"},
+  lbl_conv:{en:"Regular mortgage",fa:"وام معمولی"},
+  bound_dcr:{en:"the property's income",fa:"درآمد ملک"},
+  bound_lev:{en:"the financing limit",fa:"سقف تأمین مالی"},
+  v_go_t:{en:"Looks promising",fa:"امیدوارکننده به‌نظر می‌رسد"},
+  v_go_d:{en:"Debt coverage holds, there's positive margin, and your cash covers the close. Worth a full analysis.",fa:"پوشش بدهی برقرار است، حاشیه‌ی سود مثبت است و پول نقد شما هزینه‌ی بستن را پوشش می‌دهد. ارزش یک تحلیل کامل را دارد."},
+  v_no_t:{en:"Needs restructuring",fa:"نیازمند بازنگری"},
+  v_cash:{en:"You're short on cash.",fa:"پول نقدتان کم است."},
+  v_dcr:{en:"Debt coverage is below the minimum.",fa:"پوشش بدهی زیر حداقل است."},
+  v_cost:{en:"Costs exceed the stabilized value.",fa:"هزینه‌ها از ارزش تثبیت‌شده بیشتر است."},
+  v_no_tail:{en:"Let's adjust the numbers together.",fa:"بیایید با هم عددها را تنظیم کنیم."},
+  v_mid_t:{en:"Marginal — worth a closer look",fa:"مرزی — ارزش بررسی دقیق‌تر دارد"},
+  v_mid_d:{en:"The deal is workable but thin. A full analysis will show where the cushion is.",fa:"معامله شدنی ولی کم‌حاشیه است. یک تحلیل کامل نشان می‌دهد حاشیه‌ی امن کجاست."},
+  kp_loan:{en:"You could finance",fa:"وامی که می‌توانید بگیرید"},
+  kp_upto:{en:"up to",fa:"تا"},
+  kp_boundby:{en:"limited by",fa:"محدود به"},
+  kp_cash:{en:"Cash to get in",fa:"نقد لازم برای ورود"},
+  kp_enough:{en:"you have enough",fa:"به‌اندازه‌ی کافی دارید"},
+  kp_short:{en:"short",fa:"کسری"},
+  kp_cf:{en:"Yearly cash flow",fa:"جریان نقدی سالانه"},
+  kp_coc:{en:"cash-on-cash",fa:"بازده نقدی"},
+  kp_val:{en:"Value when stabilized",fa:"ارزش پس از تثبیت"},
+  kp_profit:{en:"margin",fa:"حاشیه"},
+  m_noi:{en:"Net operating income",fa:"درآمد عملیاتی خالص"},
+  m_loan:{en:"Supportable loan",fa:"وام قابل‌پشتیبانی"},
+  m_equity:{en:"Equity required",fa:"سرمایه‌ی لازم"},
+  m_prem:{en:"CMHC premium (est.)",fa:"حق بیمه‌ی CMHC (برآوردی)"},
+  m_ctc:{en:"Cash to close",fa:"نقد لازم برای بستن"},
+  cf_ok:{en:"✓ Your {cash} covers the close, with {gap} to spare.",fa:"✓ مبلغ {cash} شما هزینه‌ی بستن را پوشش می‌دهد، با {gap} مازاد."},
+  cf_bad:{en:"Your cash is {short} short of what this version needs. We can adjust price, scope, or leverage.",fa:"پول نقد شما {short} کمتر از چیزی است که این نسخه نیاز دارد. می‌توانیم قیمت، دامنه یا میزان وام را تنظیم کنیم."}
+};
+function tr(k){const e=STR[k];return e?(e[LANG]||e.en):k;}
+function trf(k,vars){let s=tr(k);for(const p in vars)s=s.split('{'+p+'}').join(vars[p]);return s;}
+function setLang(l){
+  LANG=l;
+  document.documentElement.lang=l;
+  document.documentElement.dir=(l==='fa')?'rtl':'ltr';
+  document.getElementById('langEn').classList.toggle('on',l==='en');
+  document.getElementById('langFa').classList.toggle('on',l==='fa');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(STR[k])el.innerHTML=tr(k);});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.getAttribute('data-i18n-ph');if(STR[k])el.setAttribute('placeholder',tr(k));});
+  calc();
+}
+
+/* ============================================================
    CMHC RENTAL CALCULATOR — client-facing engine
-   (same logic as the broker dashboard, simplified inputs)
+   (UNCHANGED MATH — identical to the broker dashboard logic)
    ============================================================ */
 const $=id=>document.getElementById(id);
 const S={scenario:'buy',path:'cmhc',points:100};
@@ -365,13 +712,13 @@ function calc(){
   let path=S.path, elig=units>=5;
   if(!elig&&path==='cmhc')path='conv';
   $('eligNote').innerHTML = elig
-    ? '<span style="color:#2E7D5B">✓ '+units+' units — eligible for CMHC MLI Select.</span>'
-    : '<span style="color:#B5462F">⚠ Under 5 units — not CMHC multi-unit eligible; using conventional.</span>';
+    ? '<span style="color:#2E7D5B">✓ '+units+' '+tr('elig_yes')+'</span>'
+    : '<span style="color:#B5462F">⚠ '+tr('elig_no')+'</span>';
 
   // costs
   let TPC,costLabel;
-  if(S.scenario==='build'){TPC=num('land')+units*num('usf')*num('psf');TPC*=1.27;costLabel='Total project cost';}
-  else {TPC=num('pp')*1.035;costLabel='All-in cost';}
+  if(S.scenario==='build'){TPC=num('land')+units*num('usf')*num('psf');TPC*=1.27;costLabel=tr('costLabel_build');}
+  else {TPC=num('pp')*1.035;costLabel=tr('costLabel_buy');}
   // (build: +27% covers soft costs, contingency, financing reserve as a blended estimate)
 
   // income
@@ -383,8 +730,8 @@ function calc(){
   const isC=S.scenario==='build';
   const vb=isC?TPC:Math.min(TPC,stab||TPC);
   let amort,dcrMin,levCap,label;
-  if(path==='cmhc'&&elig){const t=TIER[S.points];amort=t.amort;dcrMin=1.10;levCap=isC?t.ltcNew:t.ltc;label='CMHC '+S.points+'pts';}
-  else{amort=30;dcrMin=1.20;levCap=1-num('down')/100;label='Conventional';}
+  if(path==='cmhc'&&elig){const t=TIER[S.points];amort=t.amort;dcrMin=1.10;levCap=isC?t.ltcNew:t.ltc;label='CMHC '+S.points+tr('lbl_pts');}
+  else{amort=30;dcrMin=1.20;levCap=1-num('down')/100;label=tr('lbl_conv');}
   const k=K(num('rate')/100,amort);
   const maxLev=levCap*vb,maxDCR=(NOI/dcrMin)/k,loan=Math.max(0,Math.min(maxLev,maxDCR));
   const bind=maxDCR<maxLev?'DCR':'Leverage',ltv=vb>0?loan/vb:0;
@@ -401,37 +748,37 @@ function calc(){
   const dcrOK=dcr>=dcrMin-1e-6,cashOK=gap>=-1;
   const good=dcrOK&&margin>=0.10&&coc>=0&&cashOK, bad=(!dcrOK)||margin<0||!cashOK;
   let vc,vb2,vd;
-  if(good){vc='v-go';vb2='Looks promising';vd='Debt coverage holds, there’s positive margin, and your cash covers the close. Worth a full analysis.';}
-  else if(bad){vc='v-no';vb2='Needs restructuring';vd=(!cashOK?'You’re short on cash. ':'')+(!dcrOK?'Debt coverage is below minimum. ':'')+(margin<0?'Costs exceed the stabilized value. ':'')+'Let’s adjust the numbers together.';}
-  else{vc='v-mid';vb2='Marginal — worth a closer look';vd='The deal is workable but thin. A full analysis will show where the cushion is.';}
+  if(good){vc='v-go';vb2=tr('v_go_t');vd=tr('v_go_d');}
+  else if(bad){vc='v-no';vb2=tr('v_no_t');vd=(!cashOK?tr('v_cash')+' ':'')+(!dcrOK?tr('v_dcr')+' ':'')+(margin<0?tr('v_cost')+' ':'')+tr('v_no_tail');}
+  else{vc='v-mid';vb2=tr('v_mid_t');vd=tr('v_mid_d');}
   $('verdict').className='verdict '+vc;
   $('verdict').innerHTML='<div class="b">'+vb2+'</div><div class="d">'+vd+'</div>';
 
+  const loanSub=(path==='cmhc'&&elig?tr('kp_upto')+' '+(levCap*100)+'% · ':'')+tr('kp_boundby')+' '+tr(bind==='DCR'?'bound_dcr':'bound_lev');
   $('kp').innerHTML=[
-    ['dark','You could finance',fmt(loan),(path==='cmhc'&&elig?'up to '+(levCap*100)+'% · ':'')+'bound by '+bind],
-    ['','Cash to get in',fmt(ctc),(gap>=0?'you have enough':'short '+fmt(-gap))],
-    ['','Yearly cash flow',fmt(cf),'cash-on-cash '+pct(coc)],
-    ['','Value when stabilized',fmt(stab),'profit '+pct(margin)],
+    ['dark',tr('kp_loan'),fmt(loan),loanSub],
+    ['',tr('kp_cash'),fmt(ctc),(gap>=0?tr('kp_enough'):tr('kp_short')+' '+fmt(-gap))],
+    ['',tr('kp_cf'),fmt(cf),tr('kp_coc')+' '+pct(coc)],
+    ['',tr('kp_val'),fmt(stab),tr('kp_profit')+' '+pct(margin)],
   ].map(k=>`<div class="k ${k[0]}"><div class="l">${k[1]}</div><div class="v">${k[2]}</div><div class="s">${k[3]}</div></div>`).join('');
 
   $('mini').innerHTML=
-    `<tr><td>Net operating income</td><td>${fmt(NOI)}</td></tr>`+
+    `<tr><td>${tr('m_noi')}</td><td>${fmt(NOI)}</td></tr>`+
     `<tr><td>${costLabel}</td><td>${fmt(TPC)}</td></tr>`+
-    `<tr><td>Supportable loan (${label})</td><td>${fmt(loan)}</td></tr>`+
-    `<tr><td>Equity required</td><td>${fmt(equity)}</td></tr>`+
-    (prem>0?`<tr><td>CMHC premium (est.)</td><td>${fmt(prem)}</td></tr>`:'')+
-    `<tr class="t"><td>Cash to close</td><td>${fmt(ctc)}</td></tr>`;
+    `<tr><td>${tr('m_loan')} (${label})</td><td>${fmt(loan)}</td></tr>`+
+    `<tr><td>${tr('m_equity')}</td><td>${fmt(equity)}</td></tr>`+
+    (prem>0?`<tr><td>${tr('m_prem')}</td><td>${fmt(prem)}</td></tr>`:'')+
+    `<tr class="t"><td>${tr('m_ctc')}</td><td>${fmt(ctc)}</td></tr>`;
 
   $('cashFlag').innerHTML = gap>=0
-    ? '<div class="flag ok">✓ Your '+fmt(cash)+' covers the close, with '+fmt(gap)+' to spare.</div>'
-    : '<div class="flag bad">Your cash is '+fmt(-gap)+' short of what this version needs. We can adjust price, scope, or leverage.</div>';
+    ? '<div class="flag ok">'+trf('cf_ok',{cash:fmt(cash),gap:fmt(gap)})+'</div>'
+    : '<div class="flag bad">'+trf('cf_bad',{short:fmt(-gap)})+'</div>';
 
   LAST={units,scenario:S.scenario,path:label,TPC,NOI,loan,equity,ctc,cash,gap,cf,coc,stab,margin,dcr};
 }
 
 // attach calculator summary to the lead form before submit
 function prepLead(){
-  // build a readable summary into the Description field
   const L=LAST||{};
   const sum='\n\n--- Source: Website — CMHC Calculator ---\n--- Calculator estimate ---\n'+
     'Scenario: '+(L.scenario||'')+' · Units: '+(L.units||'')+' · Path: '+(L.path||'')+'\n'+
@@ -440,7 +787,6 @@ function prepLead(){
     'Client cash: '+fmt(L.cash||0)+' · Surplus/short: '+fmt(L.gap||0)+'\n'+
     'Cash-on-cash: '+pct(L.coc||0)+' · Stabilized value: '+fmt(L.stab||0)+' · Margin: '+pct(L.margin||0);
   const d=$('leadDesc'); d.value=(d.value||'')+sum;
-  // config guard: block submit until Zoho tokens are pasted
   const t1=$('zoho_xnQsjsdp').value, t2=$('zoho_xmIwtLD').value;
   if(t1.indexOf('PASTE')===0 || t2.indexOf('PASTE')===0){
     alert('This form isn’t connected to Zoho yet. Add your Web-to-Lead tokens (see the deployment guide) to enable submissions.');
@@ -462,7 +808,7 @@ calc();
 {"@type":"Question","name":"How little can I put down?","acceptedAnswer":{"@type":"Answer","text":"Qualifying MLI Select projects can be financed up to 95% of cost or value. In practice the supportable loan is usually capped by debt coverage (DCR), so the real cash-in depends on the property's income."}},
 {"@type":"Question","name":"What do I have to commit to in exchange?","acceptedAnswer":{"@type":"Answer","text":"Measurable social outcomes. Affordability commitments run a minimum of 10 years (bonus points for 20). Energy is verified by a qualified professional's attestation, and accessibility against the CSA B651:23 standard."}},
 {"@type":"Question","name":"Is the calculator a quote or an approval?","acceptedAnswer":{"@type":"Answer","text":"No. It is an estimate for discussion only, not a quote, pre-approval, or commitment to lend. Actual financing depends on a full application, a CMHC-approved lender's underwriting, current rates, and CMHC approval."}},
-{"@type":"Question","name":"What do you need from me to get started?","acceptedAnswer":{"@type":"Answer","text":"The property address, unit mix, target rents, your cost budget, and which commitments you'd consider. Submit them through the form and you'll get a full deal-specific analysis."}}
+{"@type":"Question","name":"Do you speak Persian?","acceptedAnswer":{"@type":"Answer","text":"Yes. The entire page and calculator are available in Persian using the language toggle, and consultations are available in Persian or English."}}
 ]}
 </script>
 </body>
