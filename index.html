@@ -295,7 +295,7 @@
     <div class="kick" data-i18n="calc_kick">Estimate your project</div>
     <h2 class="sec" data-i18n="calc_h2">Rental project calculator</h2>
     <p class="lead" data-i18n="calc_lead">Fill in what you know — every box has a hint and an example. As you type, the results update instantly. Don't worry about getting everything perfect; you can refine it with me later.</p>
-    <div class="calc"><div class="calc-inner">
+    <div class="calc" data-gate-lock><div class="calc-inner">
       <!-- inputs -->
       <div>
         <div class="field"><label data-i18n="f_scenario">What are you planning to do?</label>
@@ -920,5 +920,8 @@ function downloadReport(){
 {"@type":"Question","name":"Do you speak Persian?","acceptedAnswer":{"@type":"Answer","text":"Yes. The entire page and calculator are available in Persian using the language toggle, and consultations are available in Persian or English."}}
 ]}
 </script>
+<!-- GLOBAL INTAKE GATE (Intake-First) — reusable component hosted on the main site -->
+<script>window.HM_INTAKE={tool:"CMHC Rental Calculator"};</script>
+<script defer src="https://hamedmortgages.ca/assets/js/intake-gate.js"></script>
 </body>
 </html>
