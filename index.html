@@ -8,7 +8,10 @@
 <meta name="keywords" content="CMHC rental financing, MLI Select, multi-unit mortgage, purpose-built rental, Ontario mortgage broker, rental property calculator, Toronto multiplex financing, Persian mortgage broker">
 <meta name="author" content="Hamed Ashouri">
 <link rel="canonical" href="https://hamedmortgages-bot.github.io/cmhc-rental/">
-<meta name="theme-color" content="#1E2761">
+<meta name="theme-color" content="#0F3D2E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CMHC Rental Financing & MLI Select Calculator">
 <meta property="og:description" content="Estimate your CMHC / MLI Select rental project — debt sizing, equity, premium, and returns — in plain language, English or Persian. Then get a full analysis from a licensed mortgage broker.">
@@ -17,20 +20,20 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMHC Rental Financing & MLI Select Calculator">
 <meta name="twitter:description" content="Estimate your CMHC rental project and get a deal-specific analysis from a licensed Ontario mortgage broker.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231E2761'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' font-weight='bold' text-anchor='middle' fill='%23B8902E'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230F3D2E'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' font-weight='bold' text-anchor='middle' fill='%23C5A249'%3EH%3C/text%3E%3C/svg%3E">
 <style>
   :root{
-    --navy:#1E2761;--navy2:#28346B;--blue:#2E75B6;--ice:#EAF0FB;--ice2:#CADCFC;
-    --gold:#B8902E;--goldl:#F3ECD9;--ink:#1A2238;--body:#3A4256;--gray:#6A7186;
-    --line:#DCE3F0;--white:#fff;--green:#2E7D5B;--greenbg:#E6F2EC;--amber:#B5852A;--amberbg:#FBF1DD;--red:#B5462F;--redbg:#F6E5E0;
+    --navy:#0F3D2E;--navy2:#15523E;--blue:#15523E;--ice:#F5F7F5;--ice2:#A9BCB2;
+    --gold:#C5A249;--gold-soft:#D8BE7E;--goldl:#F4EEDD;--ink:#222826;--body:#4A554F;--gray:#7A857F;
+    --line:#E4E8E5;--white:#fff;--green:#1C6B50;--greenbg:#E7F0EA;--amber:#B58A2A;--amberbg:#F7F0DD;--red:#B5462F;--redbg:#F6E5E0;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--body);background:#fff;line-height:1.55}
+  body{font-family:"Manrope","Segoe UI",system-ui,-apple-system,Arial,sans-serif;color:var(--body);background:#fff;line-height:1.55}
   /* Persian / RTL */
   html[dir=rtl] body{font-family:"Vazirmatn",Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.75}
   html[dir=rtl] .hero p,html[dir=rtl] .lead{max-width:none}
-  html[dir=rtl] nav .links a{margin-left:0;margin-right:20px}
+  html[dir=rtl] nav .links a{margin-left:4px;margin-right:4px}
   html[dir=rtl] .pfx span{left:auto;right:11px}
   html[dir=rtl] .pfx input{padding-left:10px;padding-right:22px}
   html[dir=rtl] .mini td:last-child{text-align:left}
@@ -38,28 +41,36 @@
   .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
   a{color:var(--blue);text-decoration:none}
   /* nav */
-  nav{position:sticky;top:0;z-index:50;background:rgba(30,39,97,.97);backdrop-filter:blur(6px);color:#fff}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
-  nav .brand{font-weight:800;font-size:16px;color:#fff;letter-spacing:.2px;white-space:nowrap}
-  nav .brand small{display:block;font-weight:400;font-size:11px;color:var(--ice2);letter-spacing:1px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line);color:var(--ink)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:12px}
+  nav .brand{display:flex;align-items:center;gap:10px;white-space:nowrap}
+  nav .brand img{height:46px;width:auto;display:block;background:#000;padding:5px 11px;border-radius:8px}
+  nav .brand img.is-missing{display:none}
+  nav .brand .fb{display:none;flex-direction:column;line-height:1.1}
+  nav .brand img.is-missing + .fb{display:flex}
+  nav .brand .fb b{font-weight:800;font-size:15px;color:var(--navy);letter-spacing:-.01em}
+  nav .brand .fb small{font-weight:400;font-size:11px;color:var(--gray);letter-spacing:.6px}
   nav .links{display:flex;align-items:center}
-  nav .links a{color:var(--ice2);font-size:13.5px;font-weight:600;margin-left:20px}
-  nav .links a:hover{color:#fff}
-  nav .cta{background:var(--gold);color:#3b2e08!important;padding:8px 14px;border-radius:8px;font-weight:700}
-  .langtog{display:inline-flex;border:1px solid rgba(255,255,255,.35);border-radius:8px;overflow:hidden;margin-left:20px}
-  .langtog button{background:transparent;color:var(--ice2);border:none;padding:7px 11px;font-size:13px;font-weight:700;cursor:pointer}
-  .langtog button.on{background:var(--gold);color:#3b2e08}
-  html[dir=rtl] .langtog{margin-left:0;margin-right:20px}
+  nav .links a{color:var(--ink);font-size:13.5px;font-weight:600;margin-left:4px;padding:8px 11px;border-radius:8px}
+  nav .links a:hover{color:var(--navy2);background:var(--ice)}
+  nav .cta{background:var(--gold);color:var(--navy)!important;padding:9px 15px;border-radius:8px;font-weight:700;border:2px solid var(--gold)}
+  nav .cta:hover{background:var(--gold-soft)}
+  .langtog{display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-left:14px}
+  .langtog button{background:transparent;color:var(--gray);border:none;padding:7px 11px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+  .langtog button.on{background:var(--ice);color:var(--navy)}
+  html[dir=rtl] .langtog{margin-left:0;margin-right:14px}
   @media(max-width:760px){nav .links a:not(.cta){display:none}.langtog{margin-left:8px}}
   /* hero */
-  .hero{background:linear-gradient(160deg,#1E2761 0%,#28346B 70%,#33408a 100%);color:#fff;padding:64px 0 70px;position:relative;overflow:hidden}
+  .hero{background:radial-gradient(1100px 560px at 80% -10%,rgba(197,162,73,.16),transparent 60%),linear-gradient(160deg,#0B2A20 0%,#0F3D2E 55%,#15523E 100%);color:#fff;padding:64px 0 70px;position:relative;overflow:hidden}
   .hero .badge{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
   .hero h1{font-size:42px;font-weight:800;line-height:1.12;margin:14px 0 16px;max-width:760px}
   .hero p{font-size:17px;color:var(--ice2);max-width:640px}
   .hero .btns{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
-  .btn{display:inline-block;padding:13px 22px;border-radius:9px;font-weight:700;font-size:15px;cursor:pointer;border:none}
-  .btn.gold{background:var(--gold);color:#3b2e08}
-  .btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+  .btn{display:inline-block;padding:13px 22px;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;border:2px solid transparent;font-family:inherit}
+  .btn.gold{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+  .btn.gold:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
+  .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+  .btn.ghost:hover{background:#fff;color:var(--navy)}
   .hero .orb{position:absolute;border-radius:50%;background:rgba(255,255,255,.05)}
   .o1{width:340px;height:340px;right:-80px;top:-90px}.o2{width:200px;height:200px;right:140px;bottom:-70px}
   /* sections */
@@ -100,7 +111,7 @@
   .help{font-size:12px;color:var(--gray);margin:1px 0 6px;line-height:1.45}
   .help b{color:var(--body);font-weight:600}
   input[type=number],select{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font-size:15px;color:var(--ink)}
-  input:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(46,117,182,.12)}
+  input:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(28,107,80,.14)}
   .pfx{position:relative}.pfx span{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--gray)}.pfx input{padding-left:22px}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .seg{display:flex;gap:6px;flex-wrap:wrap}.seg button{flex:1;min-width:84px;padding:9px 4px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:12.5px;font-weight:600;color:var(--body);cursor:pointer}
@@ -152,16 +163,20 @@
   .formnote{font-size:12px;color:var(--gray);margin-top:6px}
   .cfg{background:#fff6f2;border:1px dashed var(--red);border-radius:9px;padding:10px 12px;font-size:12px;color:#7a2e1c;margin-bottom:14px}
   /* footer */
-  footer{background:var(--navy);color:var(--ice2);padding:40px 0 30px;font-size:13px}
+  footer{background:#0B2A20;color:var(--ice2);padding:42px 0 28px;font-size:13px}
   footer a{color:#fff}
-  .disc{font-size:11.5px;color:#9aa3c6;margin-top:18px;line-height:1.6}
-  .src{font-size:11px;color:var(--gray);margin-top:18px}
+  footer a:hover{color:var(--gold)}
+  .disc{font-size:11.5px;color:#8aa093;margin-top:18px;line-height:1.6}
+  .src{font-size:11px;color:#8aa093;margin-top:14px}
+  .footrow{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:14px;align-items:center}
+  .footrow a{font-weight:600}
+  .footbottom{margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:6px 18px;color:#8aa093;font-size:11.5px}
 </style>
 </head>
 <body>
 
 <nav><div class="wrap">
-  <div class="brand">Hamed Ashouri<small data-i18n="nav_sub">MORTGAGE ADVISORY · ONTARIO</small></div>
+  <a class="brand" href="https://hamedmortgages.ca/en/index.html" aria-label="Hamed Ashouri — home"><img src="https://hamedmortgages.ca/assets/img/logo.png" alt="Hamed Ashouri — Mortgage Advisory" onerror="this.classList.add('is-missing')"><span class="fb"><b>Hamed Ashouri</b><small data-i18n="nav_sub">MORTGAGE ADVISORY · ONTARIO</small></span></a>
   <div class="links">
     <a href="#how" data-i18n="nav_how">How it works</a>
     <a href="#calc" data-i18n="nav_calc">Calculator</a>
@@ -455,10 +470,16 @@
 
 <footer>
   <div class="wrap">
-    <div style="font-weight:800;color:#fff;font-size:16px">Hamed Ashouri — Mortgage Advisory</div>
-    <div style="margin-top:4px"><span data-i18n="ft_loc">Ontario</span> · <a href="mailto:hamedmortgages@gmail.com">hamedmortgages@gmail.com</a></div>
+    <div style="font-weight:800;color:#fff;font-size:16px">Hamed Ashouri — <span data-i18n="ft_brand">Mortgage Advisory</span></div>
+    <div style="margin-top:4px"><span data-i18n="ft_loc">Ontario</span> · <a href="mailto:hamedmortgages@gmail.com">hamedmortgages@gmail.com</a> · <a href="tel:+14168568148">(416) 856-8148</a></div>
+    <div class="footrow">
+      <a href="https://hamedmortgages.ca/en/index.html" data-i18n="ft_home">← hamedmortgages.ca</a>
+      <a href="#calc" data-i18n="nav_calc">Calculator</a>
+      <a href="#start" data-i18n="nav_cta">Get my analysis</a>
+    </div>
     <div class="disc" data-i18n="ft_disc"><b>Disclaimer:</b> This page and its calculator are for educational and discussion purposes only and do not constitute a quote, pre-approval, mortgage advice for a specific transaction, or a commitment to lend. CMHC program terms, fees, and ratios are subject to change and must be confirmed with a CMHC-approved lender and current CMHC guidance. Estimates depend entirely on the assumptions entered. CMHC multi-unit / MLI Select requires a minimum of 5 units; smaller projects use a regular mortgage.</div>
     <div class="src" style="color:#8a93b8" data-i18n="ft_src">Sources: CMHC MLI Select &amp; Multi-Unit Fees &amp; Premiums (eff. July 14, 2025); CMHC 2025 Rental Market Report; TRREB Q1-2025; Colliers/CBRE 2025 cap-rate reports; Altus 2025 Cost Guide; City of Toronto multiplex bylaws; Elevate Realty Toronto Multiplex Guide 2026.</div>
+    <div class="footbottom"><span>© 2026 Hamed Ashouri. <span data-i18n="ft_rights">All rights reserved.</span></span><span data-i18n="ft_powered">Powered by Keys &amp; Capitals</span></div>
   </div>
 </footer>
 
@@ -638,6 +659,10 @@ const STR={
   lf_btn:{en:"Send my details",fa:"ارسال اطلاعات من"},
   lf_note:{en:"Your project estimate from the calculator above is attached automatically. By submitting you agree to be contacted about your inquiry.",fa:"برآورد پروژه‌ی شما از ماشین‌حساب بالا به‌طور خودکار ضمیمه می‌شود. با ارسال، موافقت می‌کنید درباره‌ی درخواست‌تان با شما تماس گرفته شود."},
   ft_loc:{en:"Ontario",fa:"انتاریو"},
+  ft_brand:{en:"Mortgage Advisory",fa:"مشاوره وام مسکن"},
+  ft_home:{en:"← hamedmortgages.ca",fa:"← hamedmortgages.ca"},
+  ft_rights:{en:"All rights reserved.",fa:"همه‌ی حقوق محفوظ است."},
+  ft_powered:{en:"Powered by Keys & Capitals",fa:"طراحی توسط Keys & Capitals"},
   ft_disc:{en:"<b>Disclaimer:</b> This page and its calculator are for educational and discussion purposes only and do not constitute a quote, pre-approval, mortgage advice for a specific transaction, or a commitment to lend. CMHC program terms, fees, and ratios are subject to change and must be confirmed with a CMHC-approved lender and current CMHC guidance. Estimates depend entirely on the assumptions entered. CMHC multi-unit / MLI Select requires a minimum of 5 units; smaller projects use a regular mortgage.",fa:"<b>سلب مسئولیت:</b> این صفحه و ماشین‌حساب آن صرفاً برای اهداف آموزشی و گفت‌وگو هستند و پیشنهاد قیمت، پیش‌تأیید، مشاوره‌ی وام برای یک معامله‌ی خاص یا تعهد وام محسوب نمی‌شوند. شرایط برنامه، حق بیمه و نسبت‌های CMHC قابل تغییرند و باید با یک وام‌دهنده‌ی مورد تأیید CMHC و راهنمای روز CMHC تأیید شوند. برآوردها کاملاً به فرض‌های واردشده بستگی دارند. برنامه‌ی چندواحدی / MLI Select حداقل ۵ واحد لازم دارد؛ پروژه‌های کوچک‌تر از وام معمولی استفاده می‌کنند."},
   ft_src:{en:"Sources: CMHC MLI Select & Multi-Unit Fees & Premiums (eff. July 14, 2025); CMHC 2025 Rental Market Report; TRREB Q1-2025; Colliers/CBRE 2025 cap-rate reports; Altus 2025 Cost Guide; City of Toronto multiplex bylaws; Elevate Realty Toronto Multiplex Guide 2026.",fa:"منابع: حق بیمه و کارمزدهای MLI Select و چندواحدی CMHC (مؤثر از ۱۴ ژوئیه ۲۰۲۵)؛ گزارش بازار اجاره‌ی CMHC ۲۰۲۵؛ TRREB سه‌ماهه‌ی اول ۲۰۲۵؛ گزارش‌های نرخ سرمایه‌ی Colliers/CBRE ۲۰۲۵؛ راهنمای هزینه‌ی Altus ۲۰۲۵؛ مقررات چندواحدی شهر تورنتو؛ راهنمای چندواحدی Elevate Realty ۲۰۲۶."},
   elig_yes:{en:"units — eligible for CMHC's MLI Select program.",fa:"واحد — واجد شرایط برنامه‌ی MLI Select است."},
